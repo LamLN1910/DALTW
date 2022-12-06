@@ -37,7 +37,6 @@ public class XoaTaikhoan extends HttpServlet
 			Taikhoan taikhoan = new Taikhoan();
 			taikhoan.setIdTk(id_tk);
 			taikhoanDao.delete(taikhoan);
-			taikhoanDao.close();
 			//taikhoanService.deleteTaikhoan(id_tk);
 		}
 		resp.sendRedirect(req.getContextPath() + "/admin/list-taikhoan");

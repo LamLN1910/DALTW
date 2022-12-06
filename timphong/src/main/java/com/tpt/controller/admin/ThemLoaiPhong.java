@@ -43,7 +43,6 @@ public class ThemLoaiPhong extends HttpServlet {
 		} else {
 			//loaiphongService.insertLoaiphong(loaiphong);
 			loaiphongDao.create(loaiphong);
-			loaiphongDao.close();
 			resp.sendRedirect(req.getContextPath() + "/admin/list-loaiphong");
 		}
 	}

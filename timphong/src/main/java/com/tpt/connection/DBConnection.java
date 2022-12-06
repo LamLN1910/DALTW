@@ -5,9 +5,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBConnection {
-	private final String userID = "root";
+	private final String userID = "timphong";
 	private final String passWord = "01274757673";
-	private final String url = "jdbc:mysql://localhost:3306/timphong?autoReconnect=true&useSSL=false";
+	private final String url = "jdbc:mysql://db4free.net:3306/timphong?autoReconnect=true&useSSL=false";
 
 	public Connection getConnection() throws Exception
 	{

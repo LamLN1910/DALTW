@@ -29,7 +29,6 @@ public class XoaLoaiphong extends HttpServlet {
 		Loaiphong loaiphong = new Loaiphong();
 		loaiphong.setIdLp(id_lp);
 		loaiphongDao.delete(loaiphong);
-		loaiphongDao.close();
 		//loaiphongService.deleteLoaiphong(id_lp);
 		resp.sendRedirect(req.getContextPath() + "/admin/list-loaiphong");
 	}

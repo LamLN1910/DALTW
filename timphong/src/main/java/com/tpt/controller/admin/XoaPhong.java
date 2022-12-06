@@ -35,7 +35,6 @@ public class XoaPhong extends HttpServlet
 			Phong phong = new Phong();
 			phong.setIdP(id_p);
 			phongDao.delete(phong);
-			phongDao.close();
 			//phongService.deletePhong(id_p);
 			resp.sendRedirect(req.getContextPath() + "/admin/list-phong");
 		}

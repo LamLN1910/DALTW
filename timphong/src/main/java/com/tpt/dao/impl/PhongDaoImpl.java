@@ -23,7 +23,7 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 	@Override
 	public List<PhongModel> getPhongSeller(int id_tk)
 	{
-		String sql = "select top 9 * from phong where id_tk = ?";
+		String sql = "select  * from phong where id_tk = ?";
 		List<PhongModel> phongSeller = new ArrayList<PhongModel>();
 		try
 		{
@@ -177,7 +177,7 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 	@Override
 	public List<PhongModel> get9Phong()
 	{
-		String sql = "select top 9 * from phong left join (select COUNT(id_tk) as quantam, id_p as id from Dathen group by id_p) qt on phong.id_p = qt.id where trangthai=1 order by id_p";
+		String sql = "select  * from phong left join (select COUNT(id_tk) as quantam, id_p as id from Dathen group by id_p) qt on phong.id_p = qt.id where trangthai=1 order by id_p";
 		List<PhongModel> phongs = new ArrayList<PhongModel>();
 		try
 		{
@@ -325,7 +325,7 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 	public List<PhongModel> searchPhong(String keyword, String thutu, int isSeller)
 	{
 		List<PhongModel> phongs = new ArrayList<PhongModel>();
-		String sql = "select top 9 * from (select * from Phong where trangthai=1 and (ten like ? or mota like ?))";
+		String sql = "select  * from (select * from Phong where trangthai=1 and (ten like ? or mota like ?))";
 		if(isSeller != 0)
 		{
 			sql += " and id_tk = ?";
@@ -389,7 +389,7 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 	public List<PhongModel> locPhong(String keyword, int loc[], String thutu, int isSeller)
 	{
 		List<PhongModel> phongs = new ArrayList<>();
-		String sql = "select top 9 phong.id_p, phong.ten, phong.anhchinh, phong.trangthai, phong.chieudai, \r\n"
+		String sql = "select  phong.id_p, phong.ten, phong.anhchinh, phong.trangthai, phong.chieudai, \r\n"
 				+ "	   phong.chieurong, phong.gia, phong.songuoi, phong.dcchitiet, \r\n"
 				+ "	   phong.mota, phong.ngaydang, phong.id_lp, phong.id_x, phong.id_tk, qt.quantam, dg.danhgia from (select * from phong where trangthai=1 and (ten like ? or mota like ?)";
 		if(isSeller != 0)

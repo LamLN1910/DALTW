@@ -65,7 +65,6 @@ public class ThemTaikhoan extends HttpServlet
 		tk.setEmail(req.getParameter("email"));
 		tk.setAnhdaidien(filename);
 		taikhoanDao.create(tk);
-		taikhoanDao.close();
 		resp.sendRedirect(req.getContextPath() + "/admin/list-taikhoan");
 	}
 }

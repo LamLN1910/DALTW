@@ -119,7 +119,6 @@ public class ThemPhong extends HttpServlet
 		phong.setNgaydang(date);
 		//phongService.insertPhong(phong, hinhanhs);
 		phongDao.create(phong);
-		phongDao.close();
 		resp.sendRedirect(req.getContextPath() + "/admin/taikhoan?id_tk=" + id_tk);
 	}
 }

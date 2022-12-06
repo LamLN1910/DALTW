@@ -49,7 +49,6 @@ public class ListLoaiphong extends HttpServlet
 		lp.setTenloai(tenloai);
 		lp.setIdLp(id_lp);
 		loaiphongDao.update(lp);
-		loaiphongDao.close();
 		//loaiphongService.editLoaiphong(lp);
 		
 		List<LoaiphongModel> loaiphongs = loaiphongService.getAll();

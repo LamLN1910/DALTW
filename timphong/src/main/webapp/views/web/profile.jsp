@@ -27,15 +27,17 @@
 						<p class="text-danger my-0">${wrongOldPassword}</p>
 					</c:if>
 				</div>
+				<input readonly hidden type="text" id="id_tk"
+					name="id_tk" value="${sessionScope.tkentity.getIdTk()}">
 				<div class="col-8 text-black">
 					<div class="row my-4 justify-content-around">
-							<a class="btn btn-info" href="/timphong/favorites">
-							Phòng đã lưu
-							</a>
-							<a class="btn btn-success" href="/timphong/listdathen">Quản lý đặt hẹn</a>
+						<a class="btn btn-info" href="/timphong/favorites"> Phòng đã
+							lưu </a> <a class="btn btn-success" href="/timphong/listdathen">Quản
+							lý đặt hẹn</a>
 						<c:if test="${sessionScope.tkentity.getQuyen() == 3}">
-								<a class="btn btn-warning" href="/timphong/seller/ql-phong">Quản lý phòng</a>
-								<a class="btn btn-danger" href="/timphong/xacnhan-p">Xác nhận</a>
+							<a class="btn btn-warning" href="/timphong/seller/ql-phong">Quản
+								lý phòng</a>
+							<a class="btn btn-danger" href="/timphong/xacnhan-p">Xác nhận</a>
 						</c:if>
 					</div>
 					<div class="d-flex my-4 profile-content pb-3 border-bottom">
