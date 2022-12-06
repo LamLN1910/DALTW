@@ -23,4 +23,10 @@ public class TaikhoanDao extends JpaDao<Taikhoan> implements GenericDao<Taikhoan
 		return super.update(e);
 	}
 
+	@Override
+	public Taikhoan select(int id) {
+		// TODO Auto-generated method stub
+		return super.select(Taikhoan.class, id);
+	}
+
 }

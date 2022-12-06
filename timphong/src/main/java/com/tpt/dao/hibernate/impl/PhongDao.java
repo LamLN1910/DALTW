@@ -23,4 +23,10 @@ public class PhongDao extends JpaDao<Phong> implements GenericDao<Phong> {
 		return super.update(e);
 	}
 
+	@Override
+	public Phong select(int id) {
+		// TODO Auto-generated method stub
+		return super.select(Phong.class, id);
+	}
+
 }

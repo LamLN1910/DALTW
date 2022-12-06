@@ -89,7 +89,7 @@ public class Phong implements java.io.Serializable {
 		this.idP = idP;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_lp")
 	public Loaiphong getLoaiphong() {
 		return this.loaiphong;
@@ -99,7 +99,7 @@ public class Phong implements java.io.Serializable {
 		this.loaiphong = loaiphong;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_tk")
 	public Taikhoan getTaikhoan() {
 		return this.taikhoan;
@@ -109,7 +109,7 @@ public class Phong implements java.io.Serializable {
 		this.taikhoan = taikhoan;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_x")
 	public Xaphuong getXaphuong() {
 		return this.xaphuong;

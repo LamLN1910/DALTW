@@ -10,13 +10,13 @@
 
 			<div class="row profile-row p-4 my-5">
 				<c:url
-					value="/hinhanh?fname=${sessionScope.account.getAnhdaidien()}&path=taikhoan"
+					value="/hinhanh?fname=${sessionScope.tkentity.getAnhdaidien()}&path=taikhoan"
 					var="anh" />
 				<div class="d-flex col-12" style="align-items: center;">
 					<img id="previewImg"
 						class="rounded-circle profile-img img-thumbnail" src="${anh }">
 					<h2 class="text-black mb-0 ml-3">Welcome,
-						${sessionScope.account.getTen() }</h2>
+						${sessionScope.tkentity.getTen() }</h2>
 					<label class="ml-3 label-img" for="anhdaidien"><i
 						class="bi bi-upload"></i> Upload</label> <input hidden type="file"
 						name="anhdaidien" id="anhdaidien" onchange="previewFile(this);"
@@ -33,7 +33,7 @@
 							Phòng đã lưu
 							</a>
 							<a class="btn btn-success" href="/timphong/listdathen">Quản lý đặt hẹn</a>
-						<c:if test="${sessionScope.account.getQuyen() == 3}">
+						<c:if test="${sessionScope.tkentity.getQuyen() == 3}">
 								<a class="btn btn-warning" href="/timphong/seller/ql-phong">Quản lý phòng</a>
 								<a class="btn btn-danger" href="/timphong/xacnhan-p">Xác nhận</a>
 						</c:if>
@@ -41,8 +41,8 @@
 					<div class="d-flex my-4 profile-content pb-3 border-bottom">
 						<div>
 							<h4>Họ và tên</h4>
-							<p>${sessionScope.account.getHo()}
-								${sessionScope.account.getTen()}</p>
+							<p>${sessionScope.tkentity.getHo()}
+								${sessionScope.tkentity.getTen()}</p>
 						</div>
 						<input type="checkbox" hidden id="edit-input--name"
 							name="edit-input--name"> <label for="edit-input--name"
@@ -54,14 +54,14 @@
 								<div class=" border border-3 profile-content-change px-3 py-2">
 									<label class="" for="fname">Họ</label> <input
 										class="border-0 profile-content-input" type="text" id="fname"
-										name="fname" value="${sessionScope.account.getHo()}">
+										name="fname" value="${sessionScope.tkentity.getHo()}">
 								</div>
 							</div>
 							<div class="col-6">
 								<div class=" border border-3 profile-content-change px-3 py-2">
 									<label class="" for="lname">Tên</label> <input
 										class="border-0 profile-content-input" type="text" id="lname"
-										name="lname" value="${sessionScope.account.getTen()}">
+										name="lname" value="${sessionScope.tkentity.getTen()}">
 								</div>
 							</div>
 							<button class="btn btn-dark mt-4 btn-save-profile" type="submit">Lưu</button>
@@ -72,13 +72,13 @@
 						<div>
 							<h4>Tên tài khoản</h4>
 							<p>
-								<c:out value="${sessionScope.account.getTentk().charAt(0) }" />
+								<c:out value="${sessionScope.tkentity.getTentk().charAt(0) }" />
 								<c:forEach begin="2"
-									end="${sessionScope.account.getTentk().length() - 1}">
+									end="${sessionScope.tkentity.getTentk().length() - 1}">
 									<c:out value="*" />
 								</c:forEach>
 								<c:out
-									value="${sessionScope.account.getTentk().substring(sessionScope.account.getTentk().length()-1) }" />
+									value="${sessionScope.tkentity.getTentk().substring(sessionScope.tkentity.getTentk().length()-1) }" />
 							</p>
 						</div>
 
@@ -87,13 +87,13 @@
 						<div>
 							<h4>Email</h4>
 							<p>
-								<c:out value="${sessionScope.account.getEmail().charAt(0) }" />
+								<c:out value="${sessionScope.tkentity.getEmail().charAt(0) }" />
 								<c:forEach begin="2"
-									end="${sessionScope.account.getEmail().indexOf(64) }">
+									end="${sessionScope.tkentity.getEmail().indexOf(64) }">
 									<c:out value="*" />
 								</c:forEach>
 								<c:out
-									value="${sessionScope.account.getEmail().substring(sessionScope.account.getEmail().indexOf(64)) }" />
+									value="${sessionScope.tkentity.getEmail().substring(sessionScope.tkentity.getEmail().indexOf(64)) }" />
 
 							</p>
 						</div>
@@ -115,7 +115,7 @@
 					<div class="d-flex my-4 profile-content pb-3 border-bottom">
 						<div>
 							<h4>Số điện thoại</h4>
-							<p>${sessionScope.account.getSdt()}</p>
+							<p>${sessionScope.tkentity.getSdt()}</p>
 						</div>
 						<input type="checkbox" hidden id="edit-input--sdt"
 							name="edit-input--name"> <label for="edit-input--sdt"
@@ -125,7 +125,7 @@
 								<div class=" border border-3 profile-content-change px-3 py-2">
 									<label class="" for="sdt">Số điện thoại</label> <input
 										class="border-0 profile-content-input" type="text" id="sdt"
-										name="sdt" value="${sessionScope.account.getSdt()}">
+										name="sdt" value="${sessionScope.tkentity.getSdt()}">
 								</div>
 							</div>
 							<button class="btn btn-dark mt-4 btn-save-profile" type="submit">Lưu</button>
@@ -134,17 +134,17 @@
 					<div class="d-flex my-4 profile-content pb-3 border-bottom">
 						<div>
 							<h4>Bạn đang là</h4>
-							<c:if test="${sessionScope.account.getQuyen() ==2}">
+							<c:if test="${sessionScope.tkentity.getQuyen() ==2}">
 								<p>User</p>
 							</c:if>
-							<c:if test="${sessionScope.account.getQuyen() ==3}">
+							<c:if test="${sessionScope.tkentity.getQuyen() ==3}">
 								<p>Seller</p>
 							</c:if>
 						</div>
 
 						<input hidden readonly type="text" id="quyen" name="quyen"
-							value="${sessionScope.account.getQuyen()}">
-						<c:if test="${sessionScope.account.getQuyen() ==2}">
+							value="${sessionScope.tkentity.getQuyen()}">
+						<c:if test="${sessionScope.tkentity.getQuyen() ==2}">
 							<input type="checkbox" hidden id="edit-input--seller"
 								name="edit-input--seller">
 							<label for="edit-input--seller" class="label-edit-profile">Đăng
@@ -185,7 +185,7 @@
 						<div>
 							<h4>Mật khẩu</h4>
 							<c:forEach begin="1"
-								end="${sessionScope.account.getMatkhau().length() }">
+								end="${sessionScope.tkentity.getMatkhau().length() }">
 								<c:out value="*" />
 							</c:forEach>
 

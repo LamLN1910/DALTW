@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
+import com.tpt.dao.hibernate.impl.TaikhoanDao;
 import com.tpt.model.TaikhoanModel;
+import com.tpt.model.hibernate.Taikhoan;
 import com.tpt.service.ITaikhoanService;
 import com.tpt.service.impl.TaikhoanServiceImpl;
 import com.tpt.util.Constant;
@@ -25,6 +27,7 @@ public class ProfileController extends HttpServlet{
 	 */
 	private static final long serialVersionUID = 1L;
 	ITaikhoanService taikhoanService = new TaikhoanServiceImpl();
+	TaikhoanDao taikhoanDao = new TaikhoanDao();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
@@ -37,9 +40,9 @@ public class ProfileController extends HttpServlet{
 		req.setCharacterEncoding("utf-8");
 		resp.setCharacterEncoding("utf-8");
 		HttpSession session = req.getSession();
-		Object ob = session.getAttribute("account");
-		TaikhoanModel taikhoan = (TaikhoanModel) ob;
-		
+		Object ob = session.getAttribute("tkentity");
+		//TaikhoanModel taikhoan = (TaikhoanModel) ob;
+		Taikhoan taikhoan = (Taikhoan) ob;
 		Part part = req.getPart("anhdaidien");
 		String realPath = Constant.DIR + "/taikhoan";
 		String filename = ThemAnh.ThemAnh(part, realPath, 0);
@@ -70,8 +73,8 @@ public class ProfileController extends HttpServlet{
 		}
 		
 		taikhoan.setAnhdaidien(filename);
-		taikhoanService.editTaikhoan(taikhoan, filename);
-		
+		//taikhoanService.editTaikhoan(taikhoan, filename);
+		taikhoanDao.update(taikhoan);
 		resp.sendRedirect(req.getContextPath() + "/trangcanhan");
 	}
 }

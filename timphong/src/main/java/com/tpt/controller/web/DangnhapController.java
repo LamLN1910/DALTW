@@ -10,13 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.tpt.dao.hibernate.impl.TaikhoanDao;
 import com.tpt.model.TaikhoanModel;
+import com.tpt.model.hibernate.Taikhoan;
 import com.tpt.service.ITaikhoanService;
 import com.tpt.service.impl.TaikhoanServiceImpl;
 
 @WebServlet(urlPatterns = { "/login" })
 public class DangnhapController extends HttpServlet {
 	ITaikhoanService taikhoanService = new TaikhoanServiceImpl();
+	TaikhoanDao taikhoanDao = new TaikhoanDao();
 	private static final long serialVersionUID = 1L;
 
 	@Override
@@ -76,8 +79,11 @@ public class DangnhapController extends HttpServlet {
 		}
 		else
 		{
+			int id = account.getId_tk();
+			Taikhoan tkentity = taikhoanDao.select(id);
 			HttpSession session = req.getSession();
 			session.setAttribute("account", account);
+			session.setAttribute("tkentity", tkentity);
 			resp.sendRedirect(req.getContextPath() + "/trangchu");
 		}
 	}

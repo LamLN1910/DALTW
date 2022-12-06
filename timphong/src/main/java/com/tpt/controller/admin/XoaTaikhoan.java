@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.tpt.dao.hibernate.impl.TaikhoanDao;
+import com.tpt.model.hibernate.Taikhoan;
 import com.tpt.service.ITaikhoanService;
 import com.tpt.service.impl.TaikhoanServiceImpl;
 
@@ -20,6 +22,7 @@ public class XoaTaikhoan extends HttpServlet
 	 */
 	private static final long serialVersionUID = 1L;
 	ITaikhoanService taikhoanService = new TaikhoanServiceImpl();
+	TaikhoanDao taikhoanDao = new TaikhoanDao();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
@@ -31,7 +34,11 @@ public class XoaTaikhoan extends HttpServlet
 		if(id_tkString != null)
 		{
 			id_tk = Integer.parseInt(id_tkString);
-			taikhoanService.deleteTaikhoan(id_tk);
+			Taikhoan taikhoan = new Taikhoan();
+			taikhoan.setIdTk(id_tk);
+			taikhoanDao.delete(taikhoan);
+			taikhoanDao.close();
+			//taikhoanService.deleteTaikhoan(id_tk);
 		}
 		resp.sendRedirect(req.getContextPath() + "/admin/list-taikhoan");
 	}

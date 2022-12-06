@@ -22,4 +22,10 @@ public class LoaiphongDao extends JpaDao<Loaiphong> implements GenericDao<Loaiph
 		// TODO Auto-generated method stub
 		return super.update(e);
 	}
+
+	@Override
+	public Loaiphong select(int id) {
+		// TODO Auto-generated method stub
+		return super.select(Loaiphong.class, id);
+	}
 }

@@ -24,29 +24,24 @@ class LoaiphongDaoTest {
 
 	@Test
 	final void testCreateLoaiphong() {
-		Loaiphong loaiphong= new Loaiphong();
-		loaiphong.setTenloai("test");
-		loaiphong = loaiphongDao.create(loaiphong);
-		assertTrue(loaiphong.getIdLp()>0);
 		fail("Not yet implemented"); // TODO
 	}
 
 	@Test
 	final void testDeleteLoaiphong() {
-		Loaiphong loaiphong= new Loaiphong();
-		loaiphong.setIdLp(8);
-		loaiphong = loaiphongDao.delete(loaiphong);
-		assertTrue(loaiphong == null);
 		fail("Not yet implemented"); // TODO
 	}
 
 	@Test
 	final void testUpdateLoaiphong() {
-		Loaiphong loaiphong= new Loaiphong();
-		loaiphong.setIdLp(7);
-		loaiphong.setTenloai("nhà bình dân");
-		loaiphong = loaiphongDao.update(loaiphong);
-		assertTrue(loaiphong.getTenloai().equals("nhà bình dân"));
+		fail("Not yet implemented"); // TODO
+	}
+
+	@Test
+	final void testSelectInt() {
+		Loaiphong loaiphong = loaiphongDao.select(4);
+		System.out.print(loaiphong.getTenloai());
+		assertTrue(loaiphong.getIdLp()>0);
 		fail("Not yet implemented"); // TODO
 	}
 

@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.tpt.dao.hibernate.impl.PhongDao;
+import com.tpt.model.hibernate.Phong;
 import com.tpt.service.IPhongService;
 import com.tpt.service.impl.PhongServiceImpl;
 
@@ -18,7 +20,8 @@ public class XoaPhong extends HttpServlet
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	IPhongService phongService = new PhongServiceImpl();
+	PhongDao phongDao = new PhongDao();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
@@ -26,11 +29,14 @@ public class XoaPhong extends HttpServlet
 		resp.setCharacterEncoding("utf-8");
 		String id_pString = req.getParameter("id_p");
 		int id_p;
-		IPhongService phongService = new PhongServiceImpl();
 		if(id_pString != null)
 		{
 			id_p = Integer.parseInt(id_pString);
-			phongService.deletePhong(id_p);
+			Phong phong = new Phong();
+			phong.setIdP(id_p);
+			phongDao.delete(phong);
+			phongDao.close();
+			//phongService.deletePhong(id_p);
 			resp.sendRedirect(req.getContextPath() + "/admin/list-phong");
 		}
 		String id_taikhoan  = req.getParameter("id_taikhoan");

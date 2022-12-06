@@ -61,6 +61,22 @@ public class JpaDao<E> {
 		}
 		return null;
 	}
+	
+	public E select(Class<E> classE, int id) {
+		E entity = null;
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		try {
+			entityManager.getTransaction().begin();
+			entity = entityManager.find(classE, id);
+			entityManager.flush();
+			entityManager.refresh(entity);
+			entityManager.getTransaction().commit();
+			entityManager.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return entity;
+	}
 
 	public void close() {
 		if (entityManagerFactory != null) {

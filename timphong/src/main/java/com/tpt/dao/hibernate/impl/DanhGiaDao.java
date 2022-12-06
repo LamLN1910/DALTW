@@ -23,4 +23,10 @@ public class DanhGiaDao extends JpaDao<Danhgia> implements GenericDao<Danhgia> {
 		return super.update(e);
 	}
 
+	@Override
+	public Danhgia select(int id) {
+		// TODO Auto-generated method stub
+		return super.select(Danhgia.class, id);
+	}
+
 }

@@ -23,4 +23,10 @@ public class HinhanhDao extends JpaDao<Hinhanh> implements GenericDao<Hinhanh> {
 		return super.update(e);
 	}
 
+	@Override
+	public Hinhanh select(int id) {
+		// TODO Auto-generated method stub
+		return super.select(Hinhanh.class, id);
+	}
+
 }

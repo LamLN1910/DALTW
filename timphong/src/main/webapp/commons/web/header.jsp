@@ -21,7 +21,7 @@
 
 						<ul
 							class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-							<c:if test="${sessionScope.account.quyen == 1}">
+							<c:if test="${sessionScope.tkentity.quyen == 1}">
 								<li><a href="<c:url value='/admin/statistics'/>"
 									class="nav-link">Quản lý web</a></li>
 							</c:if>
@@ -30,13 +30,13 @@
 							<li><a href="/timphong/listings" class="nav-link">Tìm
 									kiếm</a></li>
 							<li><a href="#footer" class="nav-link">Liên hệ</a></li>
-							<c:if test="${sessionScope.account == null}">
+							<c:if test="${sessionScope.tkentity == null}">
 								<li><a href="<c:url value='/login'/>" class="nav-link">Đăng
 										nhập</a></li>
 							</c:if>
-							<c:if test="${sessionScope.account != null}">
+							<c:if test="${sessionScope.tkentity != null}">
 								<c:url
-									value="/hinhanh?fname=${sessionScope.account.getAnhdaidien()}&path=taikhoan"
+									value="/hinhanh?fname=${sessionScope.tkentity.getAnhdaidien()}&path=taikhoan"
 									var="anh" />
 								<li><a href="<c:url value='/trangcanhan'/>"
 									class="nav-link"><img id="previewImg"

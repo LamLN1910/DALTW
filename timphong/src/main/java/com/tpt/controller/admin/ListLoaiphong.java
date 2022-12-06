@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.tpt.dao.hibernate.impl.LoaiphongDao;
 import com.tpt.model.LoaiphongModel;
+import com.tpt.model.hibernate.Loaiphong;
 import com.tpt.service.ILoaiphongService;
 import com.tpt.service.impl.LoaiphongServiceImpl;
 
@@ -22,6 +24,7 @@ public class ListLoaiphong extends HttpServlet
 	 */
 	private static final long serialVersionUID = 1L;
 	ILoaiphongService loaiphongService = new LoaiphongServiceImpl();
+	LoaiphongDao loaiphongDao = new LoaiphongDao();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
@@ -41,11 +44,13 @@ public class ListLoaiphong extends HttpServlet
 		String id_lpString = req.getParameter("id_lp");
 		String tenloai = req.getParameter("tenloai");
 		int id_lp = Integer.parseInt(id_lpString);
-		LoaiphongModel lp = new LoaiphongModel();
+		//LoaiphongModel lp = new LoaiphongModel();
+		Loaiphong lp = new Loaiphong();
 		lp.setTenloai(tenloai);
-		lp.setId_lp(id_lp);
-		
-		loaiphongService.editLoaiphong(lp);
+		lp.setIdLp(id_lp);
+		loaiphongDao.update(lp);
+		loaiphongDao.close();
+		//loaiphongService.editLoaiphong(lp);
 		
 		List<LoaiphongModel> loaiphongs = loaiphongService.getAll();
 		req.setAttribute("loaiphongs", loaiphongs);

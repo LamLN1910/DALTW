@@ -23,4 +23,10 @@ public class QuanhuyenDao extends JpaDao<Quanhuyen> implements GenericDao<Quanhu
 		return super.update(e);
 	}
 
+	@Override
+	public Quanhuyen select(int id) {
+		// TODO Auto-generated method stub
+		return super.select(Quanhuyen.class, id);
+	}
+
 }

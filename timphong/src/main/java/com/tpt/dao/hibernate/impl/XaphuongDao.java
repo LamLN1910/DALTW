@@ -23,4 +23,10 @@ public class XaphuongDao extends JpaDao<Xaphuong> implements GenericDao<Xaphuong
 		return super.update(e);
 	}
 
+	@Override
+	public Xaphuong select(int id) {
+		// TODO Auto-generated method stub
+		return super.select(Xaphuong.class, id);
+	}
+
 }

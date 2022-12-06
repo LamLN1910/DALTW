@@ -23,4 +23,11 @@ public class DathenDao extends JpaDao<Dathen> implements GenericDao<Dathen> {
 		return super.update(e);
 	}
 
+	@Override
+	public Dathen select(int id) {
+		// TODO Auto-generated method stub
+		return super.select(Dathen.class, id);
+	}
+
+	
 }

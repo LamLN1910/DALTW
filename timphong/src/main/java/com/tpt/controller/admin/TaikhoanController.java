@@ -12,8 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import com.tpt.dao.hibernate.impl.TaikhoanDao;
 import com.tpt.model.PhongModel;
 import com.tpt.model.TaikhoanModel;
+import com.tpt.model.hibernate.Taikhoan;
 import com.tpt.service.IPhongService;
 import com.tpt.service.ITaikhoanService;
 import com.tpt.service.impl.PhongServiceImpl;
@@ -27,6 +29,7 @@ public class TaikhoanController extends HttpServlet
 	private static final long serialVersionUID = 1L;
 	ITaikhoanService taikhoanService = new TaikhoanServiceImpl();
 	IPhongService phongService = new PhongServiceImpl();
+	TaikhoanDao taikhoanDao = new TaikhoanDao();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
@@ -57,6 +60,7 @@ public class TaikhoanController extends HttpServlet
 		Part part = req.getPart("anhdaidien");
 		String realPath = Constant.DIR + "/taikhoan";
 		String filename = ThemAnh.ThemAnh(part, realPath, 0);
+		/*
 		TaikhoanModel taikhoan = new TaikhoanModel();
 		String id_tkString = req.getParameter("id_tk");
 		int id_tk;
@@ -75,7 +79,27 @@ public class TaikhoanController extends HttpServlet
 		taikhoan.setTen(req.getParameter("ten"));
 		taikhoan.setAnhdaidien(filename);
 		taikhoanService.editTaikhoan(taikhoan, filename);
-		
+		*/
+		Taikhoan taikhoan = new Taikhoan();
+		String id_tkString = req.getParameter("id_tk");
+		int id_tk;
+		if(id_tkString != null)
+		{
+			id_tk = Integer.parseInt(id_tkString);
+			taikhoan.setIdTk(id_tk);
+		}
+	
+		taikhoan.setTentk(req.getParameter("tentk"));
+		taikhoan.setMatkhau(req.getParameter("matkhau"));
+		taikhoan.setQuyen(Integer.parseInt(req.getParameter("quyen")));
+		taikhoan.setEmail(req.getParameter("email"));
+		taikhoan.setSdt(req.getParameter("sdt"));
+		taikhoan.setHo(req.getParameter("ho"));
+		taikhoan.setTen(req.getParameter("ten"));
+		taikhoan.setAnhdaidien(filename);
+		taikhoanDao.update(taikhoan);
+		taikhoanDao.close();
+		//taikhoanService.editTaikhoan(taikhoan, filename);
 		resp.sendRedirect(req.getContextPath() + "/admin/taikhoan?id_tk=" + id_tkString);
 	}
 }
