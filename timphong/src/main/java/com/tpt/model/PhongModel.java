@@ -3,7 +3,7 @@ package com.tpt.model;
 import java.sql.Date;
 import java.util.List;
 
-public class Phong
+public class PhongModel
 {
 	private int id_p;
 	private String ten;
@@ -21,18 +21,18 @@ public class Phong
 	private int id_tk;
 	private int quantam;
 	private float danhgia;
-	private Loaiphong loaiphong;
-	private Xa xa;
-	private Taikhoan taikhoan;
-	private List<Taikhoan> ngdatPhongs;
-	private List<Hinhanh> hinhanhs;
-	public Phong()
+	private LoaiphongModel loaiphong;
+	private XaModel xa;
+	private TaikhoanModel taikhoan;
+	private List<TaikhoanModel> ngdatPhongs;
+	private List<HinhanhModel> hinhanhs;
+	public PhongModel()
 	{
 	}
-	public Phong(int id_p, String ten, String anhchinh, int trangthai, float chieudai, float chieurong, int gia,
+	public PhongModel(int id_p, String ten, String anhchinh, int trangthai, float chieudai, float chieurong, int gia,
 			int songuoi, String dcchitiet, String mota, Date ngaydang, int id_lp, int maxa, int id_tk, int quantam,
-			float danhgia, Loaiphong loaiphong, Xa xa, Taikhoan taikhoan, List<Taikhoan> ngdatPhongs,
-			List<Hinhanh> hinhanhs)
+			float danhgia, LoaiphongModel loaiphong, XaModel xa, TaikhoanModel taikhoan, List<TaikhoanModel> ngdatPhongs,
+			List<HinhanhModel> hinhanhs)
 	{
 		super();
 		this.id_p = id_p;
@@ -185,43 +185,43 @@ public class Phong
 	{
 		this.danhgia = danhgia;
 	}
-	public Loaiphong getLoaiphong()
+	public LoaiphongModel getLoaiphong()
 	{
 		return loaiphong;
 	}
-	public void setLoaiphong(Loaiphong loaiphong)
+	public void setLoaiphong(LoaiphongModel loaiphong)
 	{
 		this.loaiphong = loaiphong;
 	}
-	public Xa getXa()
+	public XaModel getXa()
 	{
 		return xa;
 	}
-	public void setXa(Xa xa)
+	public void setXa(XaModel xa)
 	{
 		this.xa = xa;
 	}
-	public Taikhoan getTaikhoan()
+	public TaikhoanModel getTaikhoan()
 	{
 		return taikhoan;
 	}
-	public void setTaikhoan(Taikhoan taikhoan)
+	public void setTaikhoan(TaikhoanModel taikhoan)
 	{
 		this.taikhoan = taikhoan;
 	}
-	public List<Taikhoan> getNgdatPhongs()
+	public List<TaikhoanModel> getNgdatPhongs()
 	{
 		return ngdatPhongs;
 	}
-	public void setNgdatPhongs(List<Taikhoan> ngdatPhongs)
+	public void setNgdatPhongs(List<TaikhoanModel> ngdatPhongs)
 	{
 		this.ngdatPhongs = ngdatPhongs;
 	}
-	public List<Hinhanh> getHinhanhs()
+	public List<HinhanhModel> getHinhanhs()
 	{
 		return hinhanhs;
 	}
-	public void setHinhanhs(List<Hinhanh> hinhanhs)
+	public void setHinhanhs(List<HinhanhModel> hinhanhs)
 	{
 		this.hinhanhs = hinhanhs;
 	}

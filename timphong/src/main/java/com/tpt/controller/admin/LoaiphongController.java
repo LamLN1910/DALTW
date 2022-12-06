@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.tpt.model.Loaiphong;
-import com.tpt.model.Phong;
+import com.tpt.model.LoaiphongModel;
+import com.tpt.model.PhongModel;
 import com.tpt.service.ILoaiphongService;
 import com.tpt.service.IPhongService;
 import com.tpt.service.impl.LoaiphongServiceImpl;
@@ -35,8 +35,8 @@ public class LoaiphongController extends HttpServlet
 		
 		String id_lpString = req.getParameter("id_lp");
 		int id_lp = Integer.parseInt(id_lpString);
-		Loaiphong loaiphong = loaiphongService.getLoaiphong(id_lp);
-		List<Phong> phongsLp = phongService.getPhongLoaiphong(id_lp);
+		LoaiphongModel loaiphong = loaiphongService.getLoaiphong(id_lp);
+		List<PhongModel> phongsLp = phongService.getPhongLoaiphong(id_lp);
 		loaiphong.setPhongs(phongsLp);
 		req.setAttribute("lp", loaiphong);
 		req.getRequestDispatcher("/views/admin/detail-loaiphong.jsp").forward(req, resp);

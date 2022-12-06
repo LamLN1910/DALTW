@@ -2,10 +2,10 @@ package com.tpt.service;
 
 import java.util.List;
 
-import com.tpt.model.Tinh;
+import com.tpt.model.TinhModel;
 
 public interface ITinhService {
 
-	public List<Tinh> getAll();
+	public List<TinhModel> getAll();
 	
 }

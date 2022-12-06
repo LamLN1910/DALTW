@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.tpt.model.Taikhoan;
+import com.tpt.model.TaikhoanModel;
 import com.tpt.service.ITaikhoanService;
 import com.tpt.service.impl.TaikhoanServiceImpl;
 
@@ -35,7 +35,7 @@ public class VerifyController extends HttpServlet {
 		String currentCode = req.getParameter("currentCode");
 
 		if(trueCode.equals(currentCode)) {
-			taikhoanService.insertTaikhoan((Taikhoan)session.getAttribute("taikhoan"));
+			taikhoanService.insertTaikhoan((TaikhoanModel)session.getAttribute("taikhoan"));
 			req.setAttribute("verifysuccess", "Cảm ơn bạn đã đăng ký tài khoản của chúng tôi.");
 			req.getRequestDispatcher("/views/web/verify.jsp").forward(req, resp);
 		}

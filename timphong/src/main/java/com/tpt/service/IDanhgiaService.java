@@ -2,7 +2,7 @@ package com.tpt.service;
 
 import java.util.List;
 
-import com.tpt.model.Danhgia;
+import com.tpt.model.DanhgiaModel;
 
 public interface IDanhgiaService
 {
@@ -10,7 +10,7 @@ public interface IDanhgiaService
 
 	boolean deleteDanhgia(int id_p, int id_tk, int id_dg);
 
-	boolean insertDanhgia(Danhgia danhgia);
+	boolean insertDanhgia(DanhgiaModel danhgia);
 
-	List<Danhgia> findById_p(int id_p);
+	List<DanhgiaModel> findById_p(int id_p);
 }

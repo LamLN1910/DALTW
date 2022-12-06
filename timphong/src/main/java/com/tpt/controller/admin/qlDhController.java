@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.tpt.model.Dathen;
-import com.tpt.model.Phong;
-import com.tpt.model.Taikhoan;
+import com.tpt.model.DathenModel;
+import com.tpt.model.PhongModel;
+import com.tpt.model.TaikhoanModel;
 import com.tpt.service.IDathenService;
 import com.tpt.service.IPhongService;
 import com.tpt.service.ITaikhoanService;
@@ -58,7 +58,7 @@ public class qlDhController extends HttpServlet
 		{
 			trangthai = Integer.parseInt(hdString);
 		}
-		List<Dathen> dhChoxn = dathenService.findAll(trangthai); // Cho xac nhan
+		List<DathenModel> dhChoxn = dathenService.findAll(trangthai); // Cho xac nhan
 		req.setAttribute("dhChoxn", dhChoxn);
 		req.setAttribute("hanhdong", trangthai);
 

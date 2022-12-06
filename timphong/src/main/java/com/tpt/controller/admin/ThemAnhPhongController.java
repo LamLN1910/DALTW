@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
-import com.tpt.model.Hinhanh;
-import com.tpt.model.Taikhoan;
+import com.tpt.model.HinhanhModel;
+import com.tpt.model.TaikhoanModel;
 import com.tpt.service.IHinhanhService;
 import com.tpt.service.impl.HinhanhServiceImpl;
 import com.tpt.util.Constant;
@@ -70,7 +70,7 @@ public class ThemAnhPhongController extends HttpServlet
 //					System.out.println(e.getMessage());
 //				}
 //			}
-			Hinhanh hinhanh = new Hinhanh();
+			HinhanhModel hinhanh = new HinhanhModel();
 			String id_pString = req.getParameter("id_p");
 			hinhanh.setId_p(Integer.parseInt(id_pString));
 			hinhanh.setHinhanh(filename);
@@ -80,7 +80,7 @@ public class ThemAnhPhongController extends HttpServlet
 			}
 			HttpSession session = req.getSession();
 			Object object = session.getAttribute("account");
-			Taikhoan taikhoan = (Taikhoan)object;
+			TaikhoanModel taikhoan = (TaikhoanModel)object;
 			if(taikhoan.getQuyen() == 1)
 			{
 				resp.sendRedirect(req.getContextPath() + "/admin/phong?id_p=" + id_pString);

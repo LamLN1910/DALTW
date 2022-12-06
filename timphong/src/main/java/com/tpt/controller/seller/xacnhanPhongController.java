@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.tpt.model.Dathen;
-import com.tpt.model.Taikhoan;
+import com.tpt.model.DathenModel;
+import com.tpt.model.TaikhoanModel;
 import com.tpt.service.IDathenService;
 import com.tpt.service.impl.DathenServiceImpl;
 import com.tpt.util.Constant;
@@ -57,7 +57,7 @@ public class xacnhanPhongController extends HttpServlet
 	{
 		HttpSession session = req.getSession();
 		Object object = session.getAttribute("account");
-		Taikhoan taikhoan = (Taikhoan)object;
+		TaikhoanModel taikhoan = (TaikhoanModel)object;
 		String hdString = req.getParameter("hanhdong");
 		int id_tk = taikhoan.getId_tk();
 		int trangthai = 1;
@@ -65,8 +65,8 @@ public class xacnhanPhongController extends HttpServlet
 		{
 			trangthai = Integer.parseInt(hdString);
 		}
-		List<Dathen> dhChoxn = dathenService.findBySeller(id_tk, trangthai); //Cho xac nhan
-		List<Dathen> dhLuu = dathenService.findBySeller(id_tk, trangthai);
+		List<DathenModel> dhChoxn = dathenService.findBySeller(id_tk, trangthai); //Cho xac nhan
+		List<DathenModel> dhLuu = dathenService.findBySeller(id_tk, trangthai);
 		req.setAttribute("dhChoxn", dhChoxn);
 		req.setAttribute("dhLuu", dhLuu);
 		req.setAttribute("hanhdong", trangthai);
@@ -90,7 +90,7 @@ public class xacnhanPhongController extends HttpServlet
 		{
 			id_dh = Integer.parseInt(id_dhString);
 		}
-		Dathen dathen = dathenService.findDathen(id_dh, id_tk, id_p);
+		DathenModel dathen = dathenService.findDathen(id_dh, id_tk, id_p);
 		if(dathen != null)
 		{		
 			dathen.setTrangthai(trangthai);

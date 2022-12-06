@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.tpt.model.Phong;
+import com.tpt.model.PhongModel;
 import com.tpt.service.IPhongService;
 import com.tpt.service.impl.PhongServiceImpl;
 import com.tpt.util.Constant;
@@ -55,9 +55,9 @@ public class PagingAjaxPhongController extends HttpServlet {
 			}
 		}
 //		List<Phong> phongs = ConstantFunction.locPhong(phongService.pagingPhong(cout, keyword), loc);
-		List<Phong> phongs = phongService.pagingPhong(cout, keyword, loc, Constant.thutu[tt], 0);
+		List<PhongModel> phongs = phongService.pagingPhong(cout, keyword, loc, Constant.thutu[tt], 0);
 		PrintWriter out = resp.getWriter();
-		for (Phong p : phongs) {
+		for (PhongModel p : phongs) {
 			out.println("        <div class=\"phong col-md-6 col-lg-4 mb-5 mb-lg-5 \">\r\n"
 					+ "              <div class=\"ftco-media-1\">\r\n"
 					+ "                  <div class=\"ftco-media-1-inner\">\r\n"

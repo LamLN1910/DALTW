@@ -2,15 +2,15 @@ package com.tpt.model;
 
 import java.util.List;
 
-public class Loaiphong
+public class LoaiphongModel
 {
 	private int id_lp;
 	private String tenloai;
-	List<Phong> phongs;
-	public Loaiphong()
+	List<PhongModel> phongs;
+	public LoaiphongModel()
 	{
 	}
-	public Loaiphong(int id_lp, String tenloai, List<Phong> phongs)
+	public LoaiphongModel(int id_lp, String tenloai, List<PhongModel> phongs)
 	{
 		super();
 		this.id_lp = id_lp;
@@ -33,11 +33,11 @@ public class Loaiphong
 	{
 		this.tenloai = tenloai;
 	}
-	public List<Phong> getPhongs()
+	public List<PhongModel> getPhongs()
 	{
 		return phongs;
 	}
-	public void setPhongs(List<Phong> phongs)
+	public void setPhongs(List<PhongModel> phongs)
 	{
 		this.phongs = phongs;
 	}

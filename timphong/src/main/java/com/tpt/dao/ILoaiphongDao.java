@@ -2,13 +2,13 @@ package com.tpt.dao;
 
 import java.util.List;
 
-import com.tpt.model.Loaiphong;
+import com.tpt.model.LoaiphongModel;
 
 public interface ILoaiphongDao
 {
-	public List<Loaiphong> getAll();
-	public Loaiphong getLoaiphong(int id_lp);
-	public boolean insertLoaiphong(Loaiphong lp);
+	public List<LoaiphongModel> getAll();
+	public LoaiphongModel getLoaiphong(int id_lp);
+	public boolean insertLoaiphong(LoaiphongModel lp);
 	public boolean deleteLoaiphong(int id_lp);
-	public boolean editLoaiphong(Loaiphong lp);
+	public boolean editLoaiphong(LoaiphongModel lp);
 }

@@ -15,10 +15,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
-import com.tpt.model.Loaiphong;
-import com.tpt.model.Phong;
-import com.tpt.model.Taikhoan;
-import com.tpt.model.Tinh;
+import com.tpt.model.LoaiphongModel;
+import com.tpt.model.PhongModel;
+import com.tpt.model.TaikhoanModel;
+import com.tpt.model.TinhModel;
 import com.tpt.service.IHinhanhService;
 import com.tpt.service.ILoaiphongService;
 import com.tpt.service.IPhongService;
@@ -90,11 +90,11 @@ public class crudPhongController extends HttpServlet
 	{
 		HttpSession session = req.getSession();
 		Object object = session.getAttribute("account");
-		Taikhoan taikhoan = (Taikhoan)object;
+		TaikhoanModel taikhoan = (TaikhoanModel)object;
 		int id_tk = taikhoan.getId_tk();
-		List<Phong> phongs = phongService.getPhongSeller(id_tk); //Khi có đăng nhập thì chỉnh lại id_tk
-		List<Loaiphong> loaiphongs = loaiphongService.getAll();
-		List<Tinh> tinhs = tinhService.getAll();
+		List<PhongModel> phongs = phongService.getPhongSeller(id_tk); //Khi có đăng nhập thì chỉnh lại id_tk
+		List<LoaiphongModel> loaiphongs = loaiphongService.getAll();
+		List<TinhModel> tinhs = tinhService.getAll();
 		req.setAttribute("tinhs", tinhs);
 		req.setAttribute("loaiphongs", loaiphongs);
 		req.setAttribute("phongs", phongs);
@@ -105,11 +105,11 @@ public class crudPhongController extends HttpServlet
 		req.setCharacterEncoding("utf-8");
 		resp.setCharacterEncoding("utf-8");
 		String id_p =req.getParameter("id_p");
-		Phong phong = phongService.getPhong(Integer.parseInt(id_p));
-		List<Loaiphong> loaiphongs = loaiphongService.getAll();
+		PhongModel phong = phongService.getPhong(Integer.parseInt(id_p));
+		List<LoaiphongModel> loaiphongs = loaiphongService.getAll();
 		String id_taikhoan = req.getParameter("id_taikhoan");
 		loaiphongs.removeIf(lp -> lp.getId_lp()==phong.getId_lp());
-		List<Tinh> tinhs = tinhService.getAll();
+		List<TinhModel> tinhs = tinhService.getAll();
 		req.setAttribute("loaiphongs", loaiphongs);
 		req.setAttribute("phong", phong);
 		req.setAttribute("id_taikhoan", id_taikhoan);
@@ -161,7 +161,7 @@ public class crudPhongController extends HttpServlet
 			
 		}
 		
-		Phong phong = new Phong();
+		PhongModel phong = new PhongModel();
 		phong.setTen(req.getParameter("ten"));
 		phong.setAnhchinh(hinhanhs[0]);
 		phong.setTrangthai(1);
@@ -177,7 +177,7 @@ public class crudPhongController extends HttpServlet
 		phong.setNgaydang(date);
 		HttpSession session = req.getSession();
 		Object object = session.getAttribute("account");
-		Taikhoan taikhoan = (Taikhoan)object;
+		TaikhoanModel taikhoan = (TaikhoanModel)object;
 		int id_tk = taikhoan.getId_tk();
 		phong.setId_tk(id_tk);
 		phongService.insertPhong(phong, hinhanhs);
@@ -240,7 +240,7 @@ public class crudPhongController extends HttpServlet
 
 		}
 
-		Phong phong = new Phong();
+		PhongModel phong = new PhongModel();
 		phong.setId_p(Integer.parseInt(req.getParameter("id_p")));
 		phong.setTen(req.getParameter("ten"));
 		phong.setChieudai(Float.parseFloat(req.getParameter("chieudai")));

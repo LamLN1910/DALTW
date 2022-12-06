@@ -8,17 +8,17 @@ import java.util.List;
 
 import com.tpt.connection.DBConnection;
 import com.tpt.dao.ITinhDao;
-import com.tpt.model.Tinh;
+import com.tpt.model.TinhModel;
 import com.tpt.util.mapAttributeSQL;
 
 
 public class TinhDaoImpl extends DBConnection implements ITinhDao {
 
 	@Override
-	public List<Tinh> getAll() {
+	public List<TinhModel> getAll() {
 		
 			String sql = "select id, tentinhthanhpho from tinhthanhpho order by tentinhthanhpho";
-			List<Tinh> tinhs = new ArrayList<Tinh>();
+			List<TinhModel> tinhs = new ArrayList<TinhModel>();
 			
 			try
 			{
@@ -28,7 +28,7 @@ public class TinhDaoImpl extends DBConnection implements ITinhDao {
 				mapAttributeSQL mapTinh = new mapAttributeSQL();
 				while (rSet.next())
 				{
-					Tinh tinh = mapTinh.mapTinh(rSet);
+					TinhModel tinh = mapTinh.mapTinh(rSet);
 					tinhs.add(tinh);
 				}
 				return tinhs;
@@ -40,7 +40,7 @@ public class TinhDaoImpl extends DBConnection implements ITinhDao {
 		
 	}
 	@Override
-	public Tinh getTinh(int id)
+	public TinhModel getTinh(int id)
 	{
 		String sql = "select id, tentinhthanhpho from tinhthanhpho where id=?";
 		

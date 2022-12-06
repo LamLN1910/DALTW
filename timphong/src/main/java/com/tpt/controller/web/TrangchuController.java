@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.tpt.model.Phong;
+import com.tpt.model.PhongModel;
 import com.tpt.service.IPhongService;
 import com.tpt.service.impl.PhongServiceImpl;
 
@@ -29,7 +29,7 @@ public class TrangchuController extends HttpServlet
 		req.setCharacterEncoding("utf-8");
 		
 		// Hiện ra 9 phòng đầu tiên cho trang chủ
-		List<Phong> phongs = phongService.get9Phong();
+		List<PhongModel> phongs = phongService.get9Phong();
 		req.setAttribute("phongs", phongs);
 		req.getRequestDispatcher("/index.jsp").forward(req, resp);
 	}

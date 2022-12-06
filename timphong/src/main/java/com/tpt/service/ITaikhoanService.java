@@ -2,16 +2,16 @@ package com.tpt.service;
 
 import java.util.List;
 
-import com.tpt.model.Taikhoan;
+import com.tpt.model.TaikhoanModel;
 
 public interface ITaikhoanService
 {
-	public List<Taikhoan> getAll();
-	public List<Taikhoan> getAllUser();
-	public List<Taikhoan> getAllSeller();
-	public Taikhoan getTaikhoan(int id_tk);
-	public boolean insertTaikhoan(Taikhoan taikhoan);
+	public List<TaikhoanModel> getAll();
+	public List<TaikhoanModel> getAllUser();
+	public List<TaikhoanModel> getAllSeller();
+	public TaikhoanModel getTaikhoan(int id_tk);
+	public boolean insertTaikhoan(TaikhoanModel taikhoan);
 	public boolean deleteTaikhoan(int id_tk);
-	public boolean editTaikhoan(Taikhoan taikhoan, String filename);
-	public Taikhoan dangNhap(Taikhoan taikhoan);
+	public boolean editTaikhoan(TaikhoanModel taikhoan, String filename);
+	public TaikhoanModel dangNhap(TaikhoanModel taikhoan);
 }

@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.tpt.model.Loaiphong;
-import com.tpt.model.Phong;
+import com.tpt.model.LoaiphongModel;
+import com.tpt.model.PhongModel;
 import com.tpt.service.IDanhgiaService;
 import com.tpt.service.IDathenService;
 import com.tpt.service.ILoaiphongService;

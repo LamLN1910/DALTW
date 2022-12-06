@@ -13,9 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-import com.tpt.model.Loaiphong;
-import com.tpt.model.Phong;
-import com.tpt.model.Tinh;
+import com.tpt.model.LoaiphongModel;
+import com.tpt.model.PhongModel;
+import com.tpt.model.TinhModel;
 import com.tpt.service.ILoaiphongService;
 import com.tpt.service.IPhongService;
 import com.tpt.service.ITinhService;
@@ -39,11 +39,11 @@ public class PhongController extends HttpServlet
 		req.setCharacterEncoding("utf-8");
 		resp.setCharacterEncoding("utf-8");
 		String id_p =req.getParameter("id_p");
-		Phong phong = phongService.getPhong(Integer.parseInt(id_p));
-		List<Loaiphong> loaiphongs = loaiphongService.getAll();
+		PhongModel phong = phongService.getPhong(Integer.parseInt(id_p));
+		List<LoaiphongModel> loaiphongs = loaiphongService.getAll();
 		String id_taikhoan = req.getParameter("id_taikhoan");
 		loaiphongs.removeIf(lp -> lp.getId_lp()==phong.getId_lp());
-		List<Tinh> tinhs = tinhService.getAll();
+		List<TinhModel> tinhs = tinhService.getAll();
 		req.setAttribute("loaiphongs", loaiphongs);
 		req.setAttribute("phong", phong);
 		req.setAttribute("id_taikhoan", id_taikhoan);
@@ -95,7 +95,7 @@ public class PhongController extends HttpServlet
 
 		}
 
-		Phong phong = new Phong();
+		PhongModel phong = new PhongModel();
 		phong.setId_p(Integer.parseInt(req.getParameter("id_p")));
 		phong.setTen(req.getParameter("ten"));
 		phong.setTrangthai(Integer.parseInt(req.getParameter("trangthai")));

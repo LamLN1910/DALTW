@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.tpt.model.Loaiphong;
+import com.tpt.model.LoaiphongModel;
 import com.tpt.service.ILoaiphongService;
 import com.tpt.service.impl.LoaiphongServiceImpl;
 
@@ -27,7 +27,7 @@ public class ListLoaiphong extends HttpServlet
 	{
 		req.setCharacterEncoding("utf-8");
 		
-		List<Loaiphong> loaiphongs = loaiphongService.getAll();
+		List<LoaiphongModel> loaiphongs = loaiphongService.getAll();
 		req.setAttribute("loaiphongs", loaiphongs);
 		
 		req.getRequestDispatcher("/views/admin/list-loaiphong.jsp").forward(req, resp);
@@ -41,13 +41,13 @@ public class ListLoaiphong extends HttpServlet
 		String id_lpString = req.getParameter("id_lp");
 		String tenloai = req.getParameter("tenloai");
 		int id_lp = Integer.parseInt(id_lpString);
-		Loaiphong lp = new Loaiphong();
+		LoaiphongModel lp = new LoaiphongModel();
 		lp.setTenloai(tenloai);
 		lp.setId_lp(id_lp);
 		
 		loaiphongService.editLoaiphong(lp);
 		
-		List<Loaiphong> loaiphongs = loaiphongService.getAll();
+		List<LoaiphongModel> loaiphongs = loaiphongService.getAll();
 		req.setAttribute("loaiphongs", loaiphongs);
 		
 		resp.sendRedirect(req.getContextPath() + "/admin/list-loaiphong");

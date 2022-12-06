@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.tpt.model.Dathen;
-import com.tpt.model.Taikhoan;
+import com.tpt.model.DathenModel;
+import com.tpt.model.TaikhoanModel;
 import com.tpt.service.IDathenService;
 import com.tpt.service.impl.DathenServiceImpl;
 
@@ -60,7 +60,7 @@ public class ListDathenController extends HttpServlet
 		// trangthai {0}: luu, {1}: dang cho xac nha, {2}: duoc xac nhan, {3} bi huy
 		HttpSession session = req.getSession();
 		Object object = session.getAttribute("account");
-		Taikhoan taikhoan = (Taikhoan)object;
+		TaikhoanModel taikhoan = (TaikhoanModel)object;
 		String hdString = req.getParameter("hanhdong");
 		int trangthai;
 		if(hdString == null)
@@ -72,8 +72,8 @@ public class ListDathenController extends HttpServlet
 			trangthai = Integer.parseInt(hdString);
 		}
 		int id_tk = taikhoan.getId_tk();/*Integer.parseInt(id_tkString);*/
-		List<Dathen> dhChoxn = dathenService.findByTrangthai(id_tk, trangthai); //Cho xac nhan
-		List<Dathen> dhLuu = dathenService.findByTrangthai(id_tk, 0);
+		List<DathenModel> dhChoxn = dathenService.findByTrangthai(id_tk, trangthai); //Cho xac nhan
+		List<DathenModel> dhLuu = dathenService.findByTrangthai(id_tk, 0);
 		req.setAttribute("dhChoxn", dhChoxn);
 		req.setAttribute("dhLuu", dhLuu);
 		req.setAttribute("hanhdong", trangthai);
@@ -83,11 +83,11 @@ public class ListDathenController extends HttpServlet
 	{
 		HttpSession session = req.getSession();
 		Object object = session.getAttribute("account");
-		Taikhoan taikhoan = (Taikhoan)object;
+		TaikhoanModel taikhoan = (TaikhoanModel)object;
 		int id_tk = taikhoan.getId_tk();
 		String id_pString = req.getParameter("id_p");
 		int id_p = Integer.parseInt(id_pString);
-		Dathen dathen = new Dathen();
+		DathenModel dathen = new DathenModel();
 		dathen.setId_tk(id_tk);
 		dathen.setId_p(id_p);
 		dathen.setTrangthai(0);
@@ -98,13 +98,13 @@ public class ListDathenController extends HttpServlet
 	{
 		HttpSession session = req.getSession();
 		Object object = session.getAttribute("account");
-		Taikhoan taikhoan = (Taikhoan)object;
+		TaikhoanModel taikhoan = (TaikhoanModel)object;
 		int id_tk = taikhoan.getId_tk();
 		String id_pString = req.getParameter("id_p");
 		int id_p = Integer.parseInt(id_pString);
 		String id_dhString = req.getParameter("id_dh");
 		int id_dh = Integer.parseInt(id_dhString);
-		Dathen dathen = dathenService.findDathen(id_dh, id_tk, id_p);
+		DathenModel dathen = dathenService.findDathen(id_dh, id_tk, id_p);
 		dathen.setTrangthai(0);
 		dathenService.editDathen(dathen);
 		resp.sendRedirect(req.getContextPath() + "/listdathen?id_tk=");
@@ -114,7 +114,7 @@ public class ListDathenController extends HttpServlet
 	{
 		HttpSession session = req.getSession();
 		Object object = session.getAttribute("account");
-		Taikhoan taikhoan = (Taikhoan)object;
+		TaikhoanModel taikhoan = (TaikhoanModel)object;
 		int id_tk = taikhoan.getId_tk();
 		String id_pString = req.getParameter("id_p");
 		String id_dhString = req.getParameter("id_dh");

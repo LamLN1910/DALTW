@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.tpt.dao.IDathenDao;
 import com.tpt.dao.impl.DathenDaoImpl;
-import com.tpt.model.Dathen;
+import com.tpt.model.DathenModel;
 import com.tpt.service.IDathenService;
 
 public class DathenServiceImpl implements IDathenService
@@ -12,7 +12,7 @@ public class DathenServiceImpl implements IDathenService
 	IDathenDao dathenDao = new DathenDaoImpl();
 
 	@Override
-	public boolean editDathen(Dathen dathen)
+	public boolean editDathen(DathenModel dathen)
 	{
 		// TODO Auto-generated method stub
 		return dathenDao.editDathen(dathen);
@@ -26,34 +26,34 @@ public class DathenServiceImpl implements IDathenService
 	}
 
 	@Override
-	public boolean insertDathen(Dathen dathen)
+	public boolean insertDathen(DathenModel dathen)
 	{
 		// TODO Auto-generated method stub
 		return dathenDao.insertDathen(dathen);
 	}
 	
 	@Override
-	public List<Dathen> findByTrangthai(int id_tk, int tt)
+	public List<DathenModel> findByTrangthai(int id_tk, int tt)
 	{
 		return dathenDao.findByTrangthai(id_tk, tt);
 	}
 
 	@Override
-	public Dathen findDathen(int id_dh, int id_tk, int id_p)
+	public DathenModel findDathen(int id_dh, int id_tk, int id_p)
 	{
 		// TODO Auto-generated method stub
 		return dathenDao.findDathen(id_dh, id_tk, id_p);
 	}
 
 	@Override
-	public List<Dathen> findBySeller(int id_tk, int tt)
+	public List<DathenModel> findBySeller(int id_tk, int tt)
 	{
 		// TODO Auto-generated method stub
 		return dathenDao.findBySeller(id_tk, tt);
 	}
 
 	@Override
-	public List<Dathen> findAll(int tt)
+	public List<DathenModel> findAll(int tt)
 	{
 		return dathenDao.findAll(tt);
 	}

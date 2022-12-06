@@ -1,15 +1,15 @@
 package com.tpt.model;
 
-public class Hinhanh
+public class HinhanhModel
 {
 	private int id_p;
 	private int stt;
 	private String hinhanh;
-	public Hinhanh()
+	public HinhanhModel()
 	{
 		// TODO Auto-generated constructor stub
 	}
-	public Hinhanh(int id_p, int stt, String hinhanh)
+	public HinhanhModel(int id_p, int stt, String hinhanh)
 	{
 		super();
 		this.id_p = id_p;

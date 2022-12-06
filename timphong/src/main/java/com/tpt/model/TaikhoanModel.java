@@ -2,7 +2,7 @@ package com.tpt.model;
 
 import java.util.List;
 
-public class Taikhoan
+public class TaikhoanModel
 {
 	private int id_tk;
 	private String anhdaidien;
@@ -13,17 +13,17 @@ public class Taikhoan
 	private String sdt;
 	private String ho;
 	private String ten;
-	List<Phong> chuPhongs;
-	List<Phong> datPhongs;
-	List<Taikhoan> dangTheodoi;
-	List<Taikhoan> nguoiTheodoi;
-	public Taikhoan()
+	List<PhongModel> chuPhongs;
+	List<PhongModel> datPhongs;
+	List<TaikhoanModel> dangTheodoi;
+	List<TaikhoanModel> nguoiTheodoi;
+	public TaikhoanModel()
 	{
 		// TODO Auto-generated constructor stub
 	}
-	public Taikhoan(int id_tk, String anhdaidien, String tentk, String matkhau, int quyen, String email, String sdt,
-			String ho, String ten, List<Phong> chuPhongs, List<Phong> datPhongs, List<Taikhoan> dangTheodoi,
-			List<Taikhoan> nguoiTheodoi)
+	public TaikhoanModel(int id_tk, String anhdaidien, String tentk, String matkhau, int quyen, String email, String sdt,
+			String ho, String ten, List<PhongModel> chuPhongs, List<PhongModel> datPhongs, List<TaikhoanModel> dangTheodoi,
+			List<TaikhoanModel> nguoiTheodoi)
 	{
 		super();
 		this.id_tk = id_tk;
@@ -112,35 +112,35 @@ public class Taikhoan
 	{
 		this.ten = ten;
 	}
-	public List<Phong> getChuPhongs()
+	public List<PhongModel> getChuPhongs()
 	{
 		return chuPhongs;
 	}
-	public void setChuPhongs(List<Phong> chuPhongs)
+	public void setChuPhongs(List<PhongModel> chuPhongs)
 	{
 		this.chuPhongs = chuPhongs;
 	}
-	public List<Phong> getDatPhongs()
+	public List<PhongModel> getDatPhongs()
 	{
 		return datPhongs;
 	}
-	public void setDatPhongs(List<Phong> datPhongs)
+	public void setDatPhongs(List<PhongModel> datPhongs)
 	{
 		this.datPhongs = datPhongs;
 	}
-	public List<Taikhoan> getDangTheodoi()
+	public List<TaikhoanModel> getDangTheodoi()
 	{
 		return dangTheodoi;
 	}
-	public void setDangTheodoi(List<Taikhoan> dangTheodoi)
+	public void setDangTheodoi(List<TaikhoanModel> dangTheodoi)
 	{
 		this.dangTheodoi = dangTheodoi;
 	}
-	public List<Taikhoan> getNguoiTheodoi()
+	public List<TaikhoanModel> getNguoiTheodoi()
 	{
 		return nguoiTheodoi;
 	}
-	public void setNguoiTheodoi(List<Taikhoan> nguoiTheodoi)
+	public void setNguoiTheodoi(List<TaikhoanModel> nguoiTheodoi)
 	{
 		this.nguoiTheodoi = nguoiTheodoi;
 	}

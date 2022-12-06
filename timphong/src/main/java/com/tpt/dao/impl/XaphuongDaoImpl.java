@@ -10,7 +10,7 @@ import java.util.List;
 import com.tpt.connection.DBConnection;
 import com.tpt.util.mapAttributeSQL;
 import com.tpt.dao.IXaphuongDao;
-import com.tpt.model.Xa;
+import com.tpt.model.XaModel;
 
 public class XaphuongDaoImpl extends DBConnection implements IXaphuongDao {
 
@@ -19,16 +19,16 @@ public class XaphuongDaoImpl extends DBConnection implements IXaphuongDao {
 	ResultSet rSet = null;
 	
 	@Override
-	public List<Xa> getAll() {
+	public List<XaModel> getAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Xa> getByQuanhuyen(int id_h) {
+	public List<XaModel> getByQuanhuyen(int id_h) {
 		
 		String sql = "select * from xaphuong where quanhuyenid = ?";
-		List<Xa> xas = new ArrayList<Xa>();
+		List<XaModel> xas = new ArrayList<XaModel>();
 		try
 		{
 			connection = super.getConnection();
@@ -38,7 +38,7 @@ public class XaphuongDaoImpl extends DBConnection implements IXaphuongDao {
 			mapAttributeSQL mapXa = new mapAttributeSQL();
 			while (rSet.next())
 			{
-				Xa xa = mapXa.mapXa(rSet);
+				XaModel xa = mapXa.mapXa(rSet);
 				xas.add(xa);
 			}
 			return xas;
@@ -49,7 +49,7 @@ public class XaphuongDaoImpl extends DBConnection implements IXaphuongDao {
 		return null;
 	}
 	@Override
-	public Xa getXa(int id)
+	public XaModel getXa(int id)
 	{
 		String sql = "select * from xaphuong where id = ?";
 		try

@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.tpt.model.Danhgia;
-import com.tpt.model.Phong;
+import com.tpt.model.DanhgiaModel;
+import com.tpt.model.PhongModel;
 import com.tpt.service.IDanhgiaService;
 import com.tpt.service.IPhongService;
 import com.tpt.service.impl.DanhgiaServiceImpl;
@@ -31,8 +31,8 @@ public class DetailPhongController extends HttpServlet
 	{
 		String id_pString = req.getParameter("id_p");
 		int id_p = Integer.parseInt(id_pString);
-		List<Danhgia> danhgias = danhgiaService.findById_p(id_p);
-		Phong phong = phongService.getPhong(id_p);
+		List<DanhgiaModel> danhgias = danhgiaService.findById_p(id_p);
+		PhongModel phong = phongService.getPhong(id_p);
 		req.setAttribute("danhgias", danhgias);
 		req.setAttribute("phong", phong);
 		req.getRequestDispatcher("/views/web/phong.jsp").forward(req, resp);

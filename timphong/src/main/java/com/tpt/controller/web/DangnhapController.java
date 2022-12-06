@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.tpt.model.Taikhoan;
+import com.tpt.model.TaikhoanModel;
 import com.tpt.service.ITaikhoanService;
 import com.tpt.service.impl.TaikhoanServiceImpl;
 
@@ -66,10 +66,10 @@ public class DangnhapController extends HttpServlet {
 		{
 			pwCookie.setMaxAge(0);
 		}
-		Taikhoan taikhoan = new Taikhoan();
+		TaikhoanModel taikhoan = new TaikhoanModel();
 		taikhoan.setTentk(tentk);
 		taikhoan.setMatkhau(matkhau);
-		Taikhoan account = taikhoanService.dangNhap(taikhoan);		
+		TaikhoanModel account = taikhoanService.dangNhap(taikhoan);		
 		if (account == null) {
 			req.setAttribute("error", "Sai tên đăng nhập hoặc mật khẩu");
 			req.getRequestDispatcher("/views/web/login.jsp").forward(req, resp);

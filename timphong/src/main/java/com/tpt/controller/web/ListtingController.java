@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.tpt.model.Phong;
-import com.tpt.model.Tinh;
-import com.tpt.model.Loaiphong;
+import com.tpt.model.PhongModel;
+import com.tpt.model.TinhModel;
+import com.tpt.model.LoaiphongModel;
 import com.tpt.service.ILoaiphongService;
 import com.tpt.service.IPhongService;
 import com.tpt.service.ITinhService;
@@ -44,11 +44,11 @@ public class ListtingController extends HttpServlet
 		{
 			keyword = "";
 		}
-		List<Loaiphong> loaiphongs= loaiphongService.getAll();
-		List<Tinh> tinhs = tinhService.getAll();
+		List<LoaiphongModel> loaiphongs= loaiphongService.getAll();
+		List<TinhModel> tinhs = tinhService.getAll();
 		// Hiện ra 9 phòng đầu tiên cho trang chủ
 //		List<Phong> phongs = ConstantFunction.get9Phong(phongService.searchPhong(keyword));
-		List<Phong> phongs = phongService.searchPhong(keyword, Constant.thutu[tt], 0);
+		List<PhongModel> phongs = phongService.searchPhong(keyword, Constant.thutu[tt], 0);
 		req.setAttribute("tinhs", tinhs);
 		req.setAttribute("phongs", phongs);
 		req.setAttribute("loaiphongs", loaiphongs);
@@ -81,9 +81,9 @@ public class ListtingController extends HttpServlet
 		}
 //		List<Phong> searchPhong = phongService.searchPhong(keyword);
 //		List<Phong> phongs = ConstantFunction.get9Phong(ConstantFunction.locPhong(searchPhong, loc));
-		List<Phong> phongs = phongService.locPhong(keyword, loc, Constant.thutu[tt], 0);
+		List<PhongModel> phongs = phongService.locPhong(keyword, loc, Constant.thutu[tt], 0);
 		PrintWriter out = resp.getWriter();
-		for(Phong p : phongs)
+		for(PhongModel p : phongs)
 		{
 			out.println("						<div class=\"phong col-md-6 col-lg-4 mb-5 mb-lg-5 \">\r\n"
 					+ "							<div class=\"ftco-media-1\">\r\n"

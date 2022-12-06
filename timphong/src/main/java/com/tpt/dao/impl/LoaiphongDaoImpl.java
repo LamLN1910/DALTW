@@ -9,7 +9,7 @@ import java.util.List;
 import com.tpt.connection.DBConnection;
 import com.tpt.dao.ILoaiphongDao;
 import com.tpt.dao.IPhongDao;
-import com.tpt.model.Loaiphong;
+import com.tpt.model.LoaiphongModel;
 import com.tpt.util.mapAttributeSQL;
 
 public class LoaiphongDaoImpl extends DBConnection implements ILoaiphongDao
@@ -19,10 +19,10 @@ public class LoaiphongDaoImpl extends DBConnection implements ILoaiphongDao
 	ResultSet rSet = null;
 	IPhongDao phongDao = new PhongDaoImpl();
 	@Override
-	public List<Loaiphong> getAll()
+	public List<LoaiphongModel> getAll()
 	{
 		String sql = "select * from loaiphong";
-		List<Loaiphong> loaiphongs = new ArrayList<Loaiphong>();
+		List<LoaiphongModel> loaiphongs = new ArrayList<LoaiphongModel>();
 		try
 		{
 			connection = super.getConnection();
@@ -33,7 +33,7 @@ public class LoaiphongDaoImpl extends DBConnection implements ILoaiphongDao
 			{
 				loaiphongs.add(mapLoaiphong.mapLoaiphong(rSet));
 			}
-			for(Loaiphong lp : loaiphongs)
+			for(LoaiphongModel lp : loaiphongs)
 			{
 				lp.setPhongs(phongDao.getPhongLoaiphong(lp.getId_lp()));
 			}
@@ -45,7 +45,7 @@ public class LoaiphongDaoImpl extends DBConnection implements ILoaiphongDao
 		return null;
 	}
 	@Override
-	public Loaiphong getLoaiphong(int id_lp)
+	public LoaiphongModel getLoaiphong(int id_lp)
 	{
 		String sql = "select * from loaiphong where id_lp=?";
 		try
@@ -68,7 +68,7 @@ public class LoaiphongDaoImpl extends DBConnection implements ILoaiphongDao
 	}
 
 	@Override
-	public boolean insertLoaiphong(Loaiphong lp)
+	public boolean insertLoaiphong(LoaiphongModel lp)
 	{
 		String sql = "insert into loaiphong(tenloai) values(?)";
 		try
@@ -103,7 +103,7 @@ public class LoaiphongDaoImpl extends DBConnection implements ILoaiphongDao
 	}
 	
 	@Override
-	public boolean editLoaiphong(Loaiphong lp) {
+	public boolean editLoaiphong(LoaiphongModel lp) {
 		String sql = "update loaiphong set tenloai = ? where id_lp=?";
 		try
 		{

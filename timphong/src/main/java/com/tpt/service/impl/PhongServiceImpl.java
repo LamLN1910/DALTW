@@ -7,8 +7,8 @@ import com.tpt.dao.IHinhanhDao;
 import com.tpt.dao.IPhongDao;
 import com.tpt.dao.impl.HinhanhDaoImpl;
 import com.tpt.dao.impl.PhongDaoImpl;
-import com.tpt.model.Hinhanh;
-import com.tpt.model.Phong;
+import com.tpt.model.HinhanhModel;
+import com.tpt.model.PhongModel;
 import com.tpt.service.IPhongService;
 import com.tpt.util.Constant;
 
@@ -17,24 +17,24 @@ public class PhongServiceImpl implements IPhongService
 	IHinhanhDao hinhanhDao = new HinhanhDaoImpl();
 	IPhongDao phongDao = new PhongDaoImpl();
 	@Override
-	public List<Phong> getPhongSeller(int id_tk)
+	public List<PhongModel> getPhongSeller(int id_tk)
 	{
 		return phongDao.getPhongSeller(id_tk);
 	}
 	@Override
-	public List<Phong> getPhongLoaiphong(int id_lp)
+	public List<PhongModel> getPhongLoaiphong(int id_lp)
 	{
 		return phongDao.getPhongLoaiphong(id_lp);
 	}
 	@Override
-	public Phong getPhong(int id_p)
+	public PhongModel getPhong(int id_p)
 	{
 		return phongDao.getPhong(id_p);
 	}
 	@Override
-	public boolean editPhong(Phong newPhong, String newHinhanhs[], boolean type)
+	public boolean editPhong(PhongModel newPhong, String newHinhanhs[], boolean type)
 	{
-		Phong oldPhong = phongDao.getPhong(newPhong.getId_p());
+		PhongModel oldPhong = phongDao.getPhong(newPhong.getId_p());
 		if(newPhong.getMaxa() == 0)
 		{
 			newPhong.setMaxa(oldPhong.getMaxa());
@@ -91,13 +91,13 @@ public class PhongServiceImpl implements IPhongService
 	}
 	
 	@Override
-	public boolean insertPhong(Phong phong, String hinhanhs[])
+	public boolean insertPhong(PhongModel phong, String hinhanhs[])
 	{
 		
 		boolean check = phongDao.insertPhong(phong);
 		if(check)
 		{
-			Hinhanh ha = new Hinhanh();
+			HinhanhModel ha = new HinhanhModel();
 			int id_p = phongDao.getIdPhong(phong.getAnhchinh());
 			ha.setId_p(id_p);
 			for(int i = 1; i < Constant.SoHinh; i++)
@@ -121,8 +121,8 @@ public class PhongServiceImpl implements IPhongService
 	}
 	public boolean deletePhong(int id_p)
 	{
-		Phong phong = phongDao.getPhong(id_p);
-		for(Hinhanh ha : phong.getHinhanhs())
+		PhongModel phong = phongDao.getPhong(id_p);
+		for(HinhanhModel ha : phong.getHinhanhs())
 		{
 			deleteHinhanh(ha.getHinhanh());
 		}
@@ -135,19 +135,19 @@ public class PhongServiceImpl implements IPhongService
 	}
 	
 	@Override
-	public List<Phong> get9Phong()
+	public List<PhongModel> get9Phong()
 	{
 		return phongDao.get9Phong();
 	}
 	
 	@Override
-	public List<Phong> pagingPhong(int index, String keyword, int loc[], String thutu, int isSeller)
+	public List<PhongModel> pagingPhong(int index, String keyword, int loc[], String thutu, int isSeller)
 	{
 		return phongDao.pagingPhong(index, keyword, loc, thutu, isSeller);
 	}
 	
 	@Override
-	public List<Phong> getAll() {
+	public List<PhongModel> getAll() {
 		return phongDao.getAll();
 	}
 	boolean deleteHinhanh(String filename)
@@ -162,13 +162,13 @@ public class PhongServiceImpl implements IPhongService
 		return false;
 	}
 	@Override
-	public List<Phong> searchPhong(String keyword, String thutu, int isSeller)
+	public List<PhongModel> searchPhong(String keyword, String thutu, int isSeller)
 	{
 		// TODO Auto-generated method stub
 		return phongDao.searchPhong(keyword, thutu, isSeller);
 	}
 	@Override
-	public List<Phong> locPhong(String keyword, int[] loc, String thutu, int isSeller)
+	public List<PhongModel> locPhong(String keyword, int[] loc, String thutu, int isSeller)
 	{
 		// TODO Auto-generated method stub
 		return phongDao.locPhong(keyword, loc, thutu, isSeller);

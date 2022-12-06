@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.tpt.model.Taikhoan;
+import com.tpt.model.TaikhoanModel;
 
 @WebFilter(urlPatterns = {"/admin/*"})
 public class checkAdminFilter implements Filter
@@ -30,7 +30,7 @@ public class checkAdminFilter implements Filter
 		response.setCharacterEncoding("utf-8");
 		HttpSession session = req.getSession();
 		Object object = session.getAttribute("account");
-		Taikhoan taikhoan = (Taikhoan)object;
+		TaikhoanModel taikhoan = (TaikhoanModel)object;
 		if(taikhoan == null)
 		{
 			resp.sendRedirect(req.getContextPath() + "/trangchu");

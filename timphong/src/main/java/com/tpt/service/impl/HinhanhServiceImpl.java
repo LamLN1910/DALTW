@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.tpt.dao.IHinhanhDao;
 import com.tpt.dao.impl.HinhanhDaoImpl;
-import com.tpt.model.Hinhanh;
+import com.tpt.model.HinhanhModel;
 import com.tpt.service.IHinhanhService;
 import com.tpt.util.Constant;
 
@@ -13,14 +13,14 @@ public class HinhanhServiceImpl implements IHinhanhService
 {
 	IHinhanhDao hinhanhDao = new HinhanhDaoImpl();
 	@Override
-	public List<Hinhanh> getHinhanhP(int id_p)
+	public List<HinhanhModel> getHinhanhP(int id_p)
 	{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public boolean insertHinhanh(Hinhanh hinhanh)
+	public boolean insertHinhanh(HinhanhModel hinhanh)
 	{
 		return hinhanhDao.insertHinhanh(hinhanh);
 	}

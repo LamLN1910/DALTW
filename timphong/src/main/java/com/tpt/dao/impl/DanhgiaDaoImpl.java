@@ -8,7 +8,7 @@ import java.util.List;
 
 import com.tpt.connection.DBConnection;
 import com.tpt.dao.IDanhgiaDao;
-import com.tpt.model.Danhgia;
+import com.tpt.model.DanhgiaModel;
 import com.tpt.util.mapAttributeSQL;
 
 public class DanhgiaDaoImpl extends DBConnection implements IDanhgiaDao
@@ -17,9 +17,9 @@ public class DanhgiaDaoImpl extends DBConnection implements IDanhgiaDao
 	PreparedStatement pStatement = null;
 	ResultSet rSet = null;
 	@Override
-	public List<Danhgia> findById_p(int id_p)
+	public List<DanhgiaModel> findById_p(int id_p)
 	{
-		List<Danhgia> danhgias = new ArrayList<>();
+		List<DanhgiaModel> danhgias = new ArrayList<>();
 		String sql = "select * from Danhgia where id_p = ?";
 		try
 		{
@@ -41,9 +41,9 @@ public class DanhgiaDaoImpl extends DBConnection implements IDanhgiaDao
 	}
 	
 	@Override
-	public List<Danhgia> finhById_tk(int id_tk)
+	public List<DanhgiaModel> finhById_tk(int id_tk)
 	{
-		List<Danhgia> danhgias = new ArrayList<>();
+		List<DanhgiaModel> danhgias = new ArrayList<>();
 		String sql = "select * from Danhgia where id_tk = ?";
 		try
 		{
@@ -65,7 +65,7 @@ public class DanhgiaDaoImpl extends DBConnection implements IDanhgiaDao
 	}
 	
 	@Override
-	public boolean insertDanhgia(Danhgia danhgia)
+	public boolean insertDanhgia(DanhgiaModel danhgia)
 	{
 		String sql = "insert into Danhgia(id_p, id_tk, ngay, sosao, noidung) values(?, ?, ?, ?, ?)";
 		try

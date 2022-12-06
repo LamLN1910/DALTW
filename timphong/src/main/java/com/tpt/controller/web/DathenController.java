@@ -17,9 +17,9 @@ import javax.servlet.http.HttpSession;
 
 import org.hibernate.annotations.Check;
 
-import com.tpt.model.Dathen;
-import com.tpt.model.Phong;
-import com.tpt.model.Taikhoan;
+import com.tpt.model.DathenModel;
+import com.tpt.model.PhongModel;
+import com.tpt.model.TaikhoanModel;
 import com.tpt.service.IDathenService;
 import com.tpt.service.IPhongService;
 import com.tpt.service.ITaikhoanService;
@@ -67,7 +67,7 @@ public class DathenController extends HttpServlet
 		// trangthai {0}: luu, {1}: dang cho xac nha, {2}: duoc xac nhan, {3} bi huy
 		HttpSession session = req.getSession();
 		Object object = session.getAttribute("account");
-		Taikhoan taikhoan = (Taikhoan)object;
+		TaikhoanModel taikhoan = (TaikhoanModel)object;
 		String id_pString = req.getParameter("id_p");
 		int id_p = Integer.parseInt(id_pString);
 		String id_dhString = req.getParameter("id_dh");
@@ -76,9 +76,9 @@ public class DathenController extends HttpServlet
 		{
 			id_dh = Integer.parseInt(id_dhString);
 		}
-		Dathen dathen = dathenService.findDathen(id_dh,taikhoan.getId_tk(), id_p);
+		DathenModel dathen = dathenService.findDathen(id_dh,taikhoan.getId_tk(), id_p);
 		req.setAttribute("dathen", dathen);
-		Phong phong = phongService.getPhong(id_p);
+		PhongModel phong = phongService.getPhong(id_p);
 		req.setAttribute("phong", phong);
 	}
 	
@@ -86,13 +86,13 @@ public class DathenController extends HttpServlet
 	{
 		HttpSession session = req.getSession();
 		Object object = session.getAttribute("account");
-		Taikhoan taikhoan = (Taikhoan)object;
+		TaikhoanModel taikhoan = (TaikhoanModel)object;
 		String id_pString = req.getParameter("id_p");
 		int id_p = Integer.parseInt(id_pString);
 		String ngayString = req.getParameter("ngay");
 		String gioString = req.getParameter("gio") + ":00:00"; 
 		int id_tk = taikhoan.getId_tk(); //dùng session để lấy
-		Dathen dathen = new Dathen();
+		DathenModel dathen = new DathenModel();
 		dathen.setId_p(id_p);
 		dathen.setId_tk(id_tk);
 		dathen.setTrangthai(1);
@@ -106,7 +106,7 @@ public class DathenController extends HttpServlet
 			id_dh = Integer.parseInt(id_dhString);
 		}
 		
-		Dathen check = dathenService.findDathen(id_dh, id_tk, id_p);
+		DathenModel check = dathenService.findDathen(id_dh, id_tk, id_p);
 		boolean kt = false;
 		if(check != null)
 		{
@@ -119,7 +119,7 @@ public class DathenController extends HttpServlet
 		}
 		if(kt)
 		{
-			Phong phong = phongService.getPhong(id_p);
+			PhongModel phong = phongService.getPhong(id_p);
 			String textSeller = ConstantFunction.textDathenSeller(phong, dathen);
 			SendMail.sendEmail(phong.getTaikhoan().getEmail(), Constant.subMailSellerdh, textSeller);
 		}

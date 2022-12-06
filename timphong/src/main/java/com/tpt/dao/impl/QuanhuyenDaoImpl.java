@@ -10,7 +10,7 @@ import com.tpt.connection.DBConnection;
 import com.tpt.util.mapAttributeSQL;
 
 import com.tpt.dao.IQuanHuyenDao;
-import com.tpt.model.Huyen;
+import com.tpt.model.HuyenModel;
 
 public class QuanhuyenDaoImpl extends DBConnection implements IQuanHuyenDao {
 	
@@ -19,11 +19,11 @@ public class QuanhuyenDaoImpl extends DBConnection implements IQuanHuyenDao {
 	ResultSet rSet = null;
 	
 	@Override
-	public List<Huyen> getAll() {
+	public List<HuyenModel> getAll() {
 		// TODO Auto-generated method stub
 		
 			String sql = "select * from quanhuyen";
-			List<Huyen> huyens = new ArrayList<Huyen>();
+			List<HuyenModel> huyens = new ArrayList<HuyenModel>();
 			
 			try
 			{
@@ -33,7 +33,7 @@ public class QuanhuyenDaoImpl extends DBConnection implements IQuanHuyenDao {
 				mapAttributeSQL mapHuyen = new mapAttributeSQL();
 				while (rSet.next())
 				{
-					Huyen huyen = mapHuyen.mapHuyen(rSet);
+					HuyenModel huyen = mapHuyen.mapHuyen(rSet);
 					huyens.add(huyen);
 				}
 				return huyens;
@@ -46,10 +46,10 @@ public class QuanhuyenDaoImpl extends DBConnection implements IQuanHuyenDao {
 	}
 
 	@Override
-	public List<Huyen> getByTinh(int id_t) {
+	public List<HuyenModel> getByTinh(int id_t) {
 		
 		String sql = "select * from quanhuyen where tinhthanhphoid = ?";
-		List<Huyen> huyens = new ArrayList<Huyen>();
+		List<HuyenModel> huyens = new ArrayList<HuyenModel>();
 		try
 		{
 			connection = super.getConnection();
@@ -59,7 +59,7 @@ public class QuanhuyenDaoImpl extends DBConnection implements IQuanHuyenDao {
 			mapAttributeSQL mapHuyen = new mapAttributeSQL();
 			while (rSet.next())
 			{
-				Huyen huyen = mapHuyen.mapHuyen(rSet);
+				HuyenModel huyen = mapHuyen.mapHuyen(rSet);
 				huyens.add(huyen);
 			}
 			return huyens;
@@ -70,7 +70,7 @@ public class QuanhuyenDaoImpl extends DBConnection implements IQuanHuyenDao {
 		return null;
 	}
 	@Override
-	public Huyen getHuyen(int id)
+	public HuyenModel getHuyen(int id)
 	{
 		String sql = "select * from quanhuyen where id = ?";
 		try

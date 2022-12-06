@@ -12,8 +12,8 @@ import javax.servlet.http.HttpSession;
 
 import com.tpt.dao.IDanhgiaDao;
 import com.tpt.dao.impl.DanhgiaDaoImpl;
-import com.tpt.model.Danhgia;
-import com.tpt.model.Taikhoan;
+import com.tpt.model.DanhgiaModel;
+import com.tpt.model.TaikhoanModel;
 import com.tpt.service.IDanhgiaService;
 import com.tpt.service.impl.DanhgiaServiceImpl;
 
@@ -47,11 +47,11 @@ public class DanhgiaController extends HttpServlet
 		req.setCharacterEncoding("utf-8");
 		HttpSession session = req.getSession();
 		Object object = session.getAttribute("account");
-		Taikhoan taikhoan = (Taikhoan)object;
+		TaikhoanModel taikhoan = (TaikhoanModel)object;
 		int sosao = Integer.parseInt(req.getParameter("sosao"));
 		String noidung = req.getParameter("noidung");
 		int id_p = Integer.parseInt(req.getParameter("id_p"));
-		Danhgia danhgia = new Danhgia();
+		DanhgiaModel danhgia = new DanhgiaModel();
 		danhgia.setId_p(id_p);
 		danhgia.setSosao(sosao);
 		Date date = new Date(System.currentTimeMillis());

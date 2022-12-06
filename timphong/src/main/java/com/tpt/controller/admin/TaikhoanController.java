@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-import com.tpt.model.Phong;
-import com.tpt.model.Taikhoan;
+import com.tpt.model.PhongModel;
+import com.tpt.model.TaikhoanModel;
 import com.tpt.service.IPhongService;
 import com.tpt.service.ITaikhoanService;
 import com.tpt.service.impl.PhongServiceImpl;
@@ -35,8 +35,8 @@ public class TaikhoanController extends HttpServlet
 
 		String id_tkString = req.getParameter("id_tk");
 		int id_tk;
-		Taikhoan taikhoan = null;
-		List<Phong> phongSeller = new ArrayList<Phong>();
+		TaikhoanModel taikhoan = null;
+		List<PhongModel> phongSeller = new ArrayList<PhongModel>();
 		if (id_tkString!=null)
 		{
 			id_tk = Integer.parseInt(id_tkString);			
@@ -57,7 +57,7 @@ public class TaikhoanController extends HttpServlet
 		Part part = req.getPart("anhdaidien");
 		String realPath = Constant.DIR + "/taikhoan";
 		String filename = ThemAnh.ThemAnh(part, realPath, 0);
-		Taikhoan taikhoan = new Taikhoan();
+		TaikhoanModel taikhoan = new TaikhoanModel();
 		String id_tkString = req.getParameter("id_tk");
 		int id_tk;
 		if(id_tkString != null)

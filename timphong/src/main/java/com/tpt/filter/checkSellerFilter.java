@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.tpt.model.Phong;
-import com.tpt.model.Taikhoan;
+import com.tpt.model.PhongModel;
+import com.tpt.model.TaikhoanModel;
 import com.tpt.service.IPhongService;
 import com.tpt.service.impl.PhongServiceImpl;
 
@@ -34,7 +34,7 @@ public class checkSellerFilter implements Filter
 		String url = req.getRequestURI().toString();
 		HttpSession session = req.getSession();
 		Object object = session.getAttribute("account");
-		Taikhoan taikhoan = (Taikhoan)object;
+		TaikhoanModel taikhoan = (TaikhoanModel)object;
 		if(taikhoan == null)
 		{
 			resp.sendRedirect(req.getContextPath() + "/trangchu");
@@ -56,7 +56,7 @@ public class checkSellerFilter implements Filter
 		}
 	}
 	
-	public void actionPhongFilter(Taikhoan taikhoan, HttpServletRequest req, HttpServletResponse resp, ServletRequest request, ServletResponse response, FilterChain chain)
+	public void actionPhongFilter(TaikhoanModel taikhoan, HttpServletRequest req, HttpServletResponse resp, ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException
 	{
 		String id_pString = req.getParameter("id_p");
@@ -65,7 +65,7 @@ public class checkSellerFilter implements Filter
 		{
 			id_p = Integer.parseInt(id_pString);
 		}
-		Phong phong = phongService.getPhong(id_p);
+		PhongModel phong = phongService.getPhong(id_p);
 		if(phong == null)
 		{
 			resp.sendRedirect(req.getContextPath() + "/seller/ql-phong");

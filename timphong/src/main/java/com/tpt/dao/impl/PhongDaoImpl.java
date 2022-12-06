@@ -10,8 +10,8 @@ import java.util.List;
 import com.tpt.connection.DBConnection;
 import com.tpt.dao.IPhongDao;
 import com.tpt.dao.ITaikhoanDao;
-import com.tpt.model.Phong;
-import com.tpt.model.Taikhoan;
+import com.tpt.model.PhongModel;
+import com.tpt.model.TaikhoanModel;
 import com.tpt.util.Constant;
 import com.tpt.util.mapAttributeSQL;
 
@@ -21,10 +21,10 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 	PreparedStatement pStatement = null;
 	ResultSet rSet = null;
 	@Override
-	public List<Phong> getPhongSeller(int id_tk)
+	public List<PhongModel> getPhongSeller(int id_tk)
 	{
 		String sql = "select top 9 * from phong where id_tk = ?";
-		List<Phong> phongSeller = new ArrayList<Phong>();
+		List<PhongModel> phongSeller = new ArrayList<PhongModel>();
 		try
 		{
 			connection = super.getConnection();
@@ -34,7 +34,7 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 			mapAttributeSQL mapPhong = new mapAttributeSQL();
 			while (rSet.next())
 			{
-				Phong phong = mapPhong.mapPhong(rSet);
+				PhongModel phong = mapPhong.mapPhong(rSet);
 				phongSeller.add(phong);
 			}
 		} catch (Exception e)
@@ -44,10 +44,10 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 		return phongSeller;
 	}
 	@Override
-	public List<Phong> getPhongLoaiphong(int id_lp)
+	public List<PhongModel> getPhongLoaiphong(int id_lp)
 	{
 		String sql = "select * from phong where id_lp=?";
-		List<Phong> phongs = new ArrayList<Phong>();
+		List<PhongModel> phongs = new ArrayList<PhongModel>();
 		try
 		{
 			connection = super.getConnection();
@@ -67,7 +67,7 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 		return null;
 	}
 	@Override
-	public Phong getPhong(int id_p)
+	public PhongModel getPhong(int id_p)
 	{
 		String sql = "select phong.id_p, phong.ten, phong.anhchinh, phong.trangthai, phong.chieudai, \r\n"
 				+ "	   phong.chieurong, phong.gia, phong.songuoi, phong.dcchitiet, \r\n"
@@ -82,9 +82,9 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 			mapAttributeSQL mapPhong = new mapAttributeSQL();
 			while (rSet.next())
 			{
-				Phong phong = mapPhong.mapPhong(rSet);
+				PhongModel phong = mapPhong.mapPhong(rSet);
 				ITaikhoanDao taikhoanDao = new TaikhoanDaoImpl();
-				Taikhoan taikhoan = taikhoanDao.getTaikhoan(phong.getId_tk());
+				TaikhoanModel taikhoan = taikhoanDao.getTaikhoan(phong.getId_tk());
 				phong.setTaikhoan(taikhoan);
 				phong.setQuantam(rSet.getInt("quantam") + 30);
 				phong.setDanhgia((float)Math.round(rSet.getFloat("danhgia")*10)/10);
@@ -98,7 +98,7 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 	}
 
 	@Override
-	public boolean insertPhong(Phong newPhong)
+	public boolean insertPhong(PhongModel newPhong)
 	{
 		String sql = "insert into phong(ten, anhchinh, trangthai, chieudai, chieurong, gia, songuoi, dcchitiet, mota, id_lp, id_x, id_tk) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try
@@ -145,7 +145,7 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 	}
 
 	@Override
-	public boolean editPhong(Phong newPhong)
+	public boolean editPhong(PhongModel newPhong)
 	{
 		String sql = "update phong set ten=?, anhchinh=?, trangthai=?, chieudai=?, chieurong=?, gia=?, songuoi=?, dcchitiet=?, mota=?, id_tk=?, id_lp=?, id_x=? where id_p=?";
 		try
@@ -175,10 +175,10 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 	}
 	
 	@Override
-	public List<Phong> get9Phong()
+	public List<PhongModel> get9Phong()
 	{
 		String sql = "select top 9 * from phong left join (select COUNT(id_tk) as quantam, id_p as id from Dathen group by id_p) qt on phong.id_p = qt.id where trangthai=1 order by id_p";
-		List<Phong> phongs = new ArrayList<Phong>();
+		List<PhongModel> phongs = new ArrayList<PhongModel>();
 		try
 		{
 			connection = super.getConnection();
@@ -187,7 +187,7 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 			mapAttributeSQL map = new mapAttributeSQL();
 			while(rSet.next())
 			{
-				Phong phong = map.mapPhong(rSet);
+				PhongModel phong = map.mapPhong(rSet);
 				phong.setQuantam(rSet.getInt("quantam") + 30);
 				phongs.add(phong);
 			}
@@ -199,9 +199,9 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 		return null;
 	}
 	@Override
-	public List<Phong> pagingPhong(int index, String keyword, int loc[], String thutu,int isSeller)
+	public List<PhongModel> pagingPhong(int index, String keyword, int loc[], String thutu,int isSeller)
 	{
-		List<Phong> phongs = new ArrayList<>();
+		List<PhongModel> phongs = new ArrayList<>();
 		String sql = "select phong.id_p, phong.ten, phong.anhchinh, phong.trangthai, phong.chieudai, \r\n"
 				+ "	   phong.chieurong, phong.gia, phong.songuoi, phong.dcchitiet, \r\n"
 				+ "	   phong.mota, phong.ngaydang, phong.id_lp, phong.id_x, phong.id_tk, qt.quantam, dg.danhgia from (select * from phong where trangthai=1 and (ten like ? or mota like ?)";
@@ -245,7 +245,7 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 			mapAttributeSQL map = new mapAttributeSQL();
 			while(rSet.next())
 			{
-				Phong phong = map.mapPhong(rSet);
+				PhongModel phong = map.mapPhong(rSet);
 				phong.setQuantam(rSet.getInt("quantam") + 30);
 				phongs.add(phong);
 			}
@@ -282,10 +282,10 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 	}
 	
 	@Override
-	public List<Phong> getAll() 
+	public List<PhongModel> getAll() 
 	{
 		String sql = "select * from phong";
-		List<Phong> phongs = new ArrayList<Phong>();
+		List<PhongModel> phongs = new ArrayList<PhongModel>();
 		try {
 			connection = super.getConnection();
 			pStatement = connection.prepareStatement(sql);
@@ -322,9 +322,9 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 		return 0;
 	}
 	@Override
-	public List<Phong> searchPhong(String keyword, String thutu, int isSeller)
+	public List<PhongModel> searchPhong(String keyword, String thutu, int isSeller)
 	{
-		List<Phong> phongs = new ArrayList<Phong>();
+		List<PhongModel> phongs = new ArrayList<PhongModel>();
 		String sql = "select top 9 * from (select * from Phong where trangthai=1 and (ten like ? or mota like ?))";
 		if(isSeller != 0)
 		{
@@ -346,7 +346,7 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 			mapAttributeSQL map = new mapAttributeSQL();
 			while(rSet.next())
 			{
-				Phong phong = map.mapPhong(rSet);
+				PhongModel phong = map.mapPhong(rSet);
 				phong.setQuantam(rSet.getInt("quantam") + 30);
 				phongs.add(phong);
 			}
@@ -358,7 +358,7 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 		return null;
 	}
 	@Override
-	public boolean sellerUpdatePhong(Phong newPhong)
+	public boolean sellerUpdatePhong(PhongModel newPhong)
 	{
 		String sql = "update phong set ten=?, anhchinh=?, chieudai=?, chieurong=?, gia=?, dcchitiet=?, mota=?, id_lp=?, id_x=?, songuoi=? where id_p=?";
 		try
@@ -386,9 +386,9 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 	}
 	
 	@Override
-	public List<Phong> locPhong(String keyword, int loc[], String thutu, int isSeller)
+	public List<PhongModel> locPhong(String keyword, int loc[], String thutu, int isSeller)
 	{
-		List<Phong> phongs = new ArrayList<>();
+		List<PhongModel> phongs = new ArrayList<>();
 		String sql = "select top 9 phong.id_p, phong.ten, phong.anhchinh, phong.trangthai, phong.chieudai, \r\n"
 				+ "	   phong.chieurong, phong.gia, phong.songuoi, phong.dcchitiet, \r\n"
 				+ "	   phong.mota, phong.ngaydang, phong.id_lp, phong.id_x, phong.id_tk, qt.quantam, dg.danhgia from (select * from phong where trangthai=1 and (ten like ? or mota like ?)";
@@ -429,7 +429,7 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 			mapAttributeSQL map = new mapAttributeSQL();
 			while(rSet.next())
 			{
-				Phong phong = map.mapPhong(rSet);
+				PhongModel phong = map.mapPhong(rSet);
 				phong.setQuantam(rSet.getInt("quantam") + 30);
 				phongs.add(phong);
 			}

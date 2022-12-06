@@ -3,7 +3,7 @@ package com.tpt.model;
 import java.sql.Date;
 import java.sql.Time;
 
-public class Dathen
+public class DathenModel
 {
 	private int id_dh;
 	private int id_tk;
@@ -11,12 +11,12 @@ public class Dathen
 	private int trangthai;
 	private Date ngay;
 	private Time gio;
-	private Taikhoan nguoidat;
-	private Phong phong;
-	public Dathen()
+	private TaikhoanModel nguoidat;
+	private PhongModel phong;
+	public DathenModel()
 	{
 	}
-	public Dathen(int id_dh, int id_tk, int id_p, int trangthai, Date ngay, Time gio, Taikhoan nguoidat, Phong phong)
+	public DathenModel(int id_dh, int id_tk, int id_p, int trangthai, Date ngay, Time gio, TaikhoanModel nguoidat, PhongModel phong)
 	{
 		super();
 		this.id_dh = id_dh;
@@ -76,19 +76,19 @@ public class Dathen
 	{
 		this.gio = gio;
 	}
-	public Taikhoan getNguoidat()
+	public TaikhoanModel getNguoidat()
 	{
 		return nguoidat;
 	}
-	public void setNguoidat(Taikhoan nguoidat)
+	public void setNguoidat(TaikhoanModel nguoidat)
 	{
 		this.nguoidat = nguoidat;
 	}
-	public Phong getPhong()
+	public PhongModel getPhong()
 	{
 		return phong;
 	}
-	public void setPhong(Phong phong)
+	public void setPhong(PhongModel phong)
 	{
 		this.phong = phong;
 	}

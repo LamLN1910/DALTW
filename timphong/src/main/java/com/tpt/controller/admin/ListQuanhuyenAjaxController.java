@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.tpt.model.Huyen;
+import com.tpt.model.HuyenModel;
 import com.tpt.service.IQuanhuyenService;
 import com.tpt.service.impl.QuanhuyenServiceImpl;
 
@@ -27,10 +27,10 @@ public class ListQuanhuyenAjaxController extends HttpServlet {
 
 		String id_tinh = req.getParameter("exits");
 		int id_t = Integer.parseInt(id_tinh);
-		List<Huyen> huyens = quanhuyenService.getByTinh(id_t);
+		List<HuyenModel> huyens = quanhuyenService.getByTinh(id_t);
 		PrintWriter out = resp.getWriter();
 		out.print("<option value='0' selected>Chọn quận huyện</option>");
-		for (Huyen h : huyens) {
+		for (HuyenModel h : huyens) {
 			out.println("<option value=" + h.getMahuyen() + " > " + h.getTenhuyen() + "</option>\n");
 		}
 	}

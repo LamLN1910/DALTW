@@ -14,9 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-import com.tpt.model.Loaiphong;
-import com.tpt.model.Phong;
-import com.tpt.model.Tinh;
+import com.tpt.model.LoaiphongModel;
+import com.tpt.model.PhongModel;
+import com.tpt.model.TinhModel;
 import com.tpt.service.ILoaiphongService;
 import com.tpt.service.IPhongService;
 import com.tpt.service.IQuanhuyenService;
@@ -43,8 +43,8 @@ public class ThemPhong extends HttpServlet
 		req.setCharacterEncoding("utf-8");
 		resp.setCharacterEncoding("utf-8");
 		String id_tk  = req.getParameter("id_tk");
-		List<Loaiphong> loaiphongs = loaiphongService.getAll();
-		List<Tinh> tinhs = tinhService.getAll();
+		List<LoaiphongModel> loaiphongs = loaiphongService.getAll();
+		List<TinhModel> tinhs = tinhService.getAll();
 		req.setAttribute("loaiphongs", loaiphongs);
 		req.setAttribute("tinhs", tinhs);
 		req.setAttribute("id_tk", id_tk);
@@ -95,7 +95,7 @@ public class ThemPhong extends HttpServlet
 			
 		}
 		
-		Phong phong = new Phong();
+		PhongModel phong = new PhongModel();
 		phong.setTen(req.getParameter("ten"));
 		phong.setAnhchinh(hinhanhs[0]);
 		phong.setTrangthai(Integer.parseInt(req.getParameter("trangthai")));

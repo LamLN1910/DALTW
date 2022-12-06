@@ -2,11 +2,11 @@ package com.tpt.dao;
 
 import java.util.List;
 
-import com.tpt.model.Huyen;
+import com.tpt.model.HuyenModel;
 
 public interface IQuanHuyenDao {
 
-	public List<Huyen> getAll();
-	public List<Huyen> getByTinh(int id_t);
-	public Huyen getHuyen(int id);
+	public List<HuyenModel> getAll();
+	public List<HuyenModel> getByTinh(int id_t);
+	public HuyenModel getHuyen(int id);
 }

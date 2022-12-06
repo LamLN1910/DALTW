@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.tpt.dao.ITaikhoanDao;
 import com.tpt.dao.impl.TaikhoanDaoImpl;
-import com.tpt.model.Taikhoan;
+import com.tpt.model.TaikhoanModel;
 import com.tpt.service.ITaikhoanService;
 import com.tpt.util.Constant;
 
@@ -13,28 +13,28 @@ public class TaikhoanServiceImpl implements ITaikhoanService
 {
 	ITaikhoanDao taikhoanDao = new TaikhoanDaoImpl();
 	@Override
-	public List<Taikhoan> getAll()
+	public List<TaikhoanModel> getAll()
 	{
 		return taikhoanDao.getAll();
 	}
 	@Override
-	public List<Taikhoan> getAllUser()
+	public List<TaikhoanModel> getAllUser()
 	{
 		return taikhoanDao.getAllUser();
 	}
 	@Override
-	public List<Taikhoan> getAllSeller()
+	public List<TaikhoanModel> getAllSeller()
 	{
 		return taikhoanDao.getAllSeller();
 	}
 	@Override
-	public Taikhoan getTaikhoan(int id_tk)
+	public TaikhoanModel getTaikhoan(int id_tk)
 	{
 		return taikhoanDao.getTaikhoan(id_tk);
 	}
 
 	@Override
-	public boolean insertTaikhoan(Taikhoan taikhoan)
+	public boolean insertTaikhoan(TaikhoanModel taikhoan)
 	{
 		return taikhoanDao.insertTaikhoan(taikhoan);
 	}
@@ -42,7 +42,7 @@ public class TaikhoanServiceImpl implements ITaikhoanService
 	@Override
 	public boolean deleteTaikhoan(int id_tk)
 	{
-		Taikhoan taikhoan = taikhoanDao.getTaikhoan(id_tk);
+		TaikhoanModel taikhoan = taikhoanDao.getTaikhoan(id_tk);
 		if(taikhoanDao.deleteTaikhoan(id_tk))
 		{
 			deleteHinhanh(taikhoan.getAnhdaidien());
@@ -52,10 +52,10 @@ public class TaikhoanServiceImpl implements ITaikhoanService
 	}
 
 	@Override
-	public boolean editTaikhoan(Taikhoan taikhoan, String filename)
+	public boolean editTaikhoan(TaikhoanModel taikhoan, String filename)
 	{
 		boolean chkDelete = false;
-		Taikhoan oldTaikhoan = taikhoanDao.getTaikhoan(taikhoan.getId_tk());
+		TaikhoanModel oldTaikhoan = taikhoanDao.getTaikhoan(taikhoan.getId_tk());
 		String oldfilename = oldTaikhoan.getAnhdaidien();
 		if(oldfilename == null)
 		{
@@ -78,7 +78,7 @@ public class TaikhoanServiceImpl implements ITaikhoanService
 		return test;
 	}
 	@Override
-	public Taikhoan dangNhap(Taikhoan taikhoan) {
+	public TaikhoanModel dangNhap(TaikhoanModel taikhoan) {
 		return taikhoanDao.dangNhap(taikhoan);
 	}
 	boolean deleteHinhanh(String filename)

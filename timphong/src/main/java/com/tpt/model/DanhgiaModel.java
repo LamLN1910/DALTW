@@ -2,7 +2,7 @@ package com.tpt.model;
 
 import java.sql.Date;
 
-public class Danhgia
+public class DanhgiaModel
 {
 	private int id_dg;
 	private int id_p;
@@ -10,14 +10,14 @@ public class Danhgia
 	private Date ngay;
 	private float sosao;
 	private String noidung;
-	private Taikhoan taikhoan;
-	private Phong phong;
-	public Danhgia()
+	private TaikhoanModel taikhoan;
+	private PhongModel phong;
+	public DanhgiaModel()
 	{
 		// TODO Auto-generated constructor stub
 	}
-	public Danhgia(int id_dg, int id_p, int id_tk, Date ngay, float sosao, String noidung, Taikhoan taikhoan,
-			Phong phong)
+	public DanhgiaModel(int id_dg, int id_p, int id_tk, Date ngay, float sosao, String noidung, TaikhoanModel taikhoan,
+			PhongModel phong)
 	{
 		super();
 		this.id_dg = id_dg;
@@ -77,19 +77,19 @@ public class Danhgia
 	{
 		this.noidung = noidung;
 	}
-	public Taikhoan getTaikhoan()
+	public TaikhoanModel getTaikhoan()
 	{
 		return taikhoan;
 	}
-	public void setTaikhoan(Taikhoan taikhoan)
+	public void setTaikhoan(TaikhoanModel taikhoan)
 	{
 		this.taikhoan = taikhoan;
 	}
-	public Phong getPhong()
+	public PhongModel getPhong()
 	{
 		return phong;
 	}
-	public void setPhong(Phong phong)
+	public void setPhong(PhongModel phong)
 	{
 		this.phong = phong;
 	}

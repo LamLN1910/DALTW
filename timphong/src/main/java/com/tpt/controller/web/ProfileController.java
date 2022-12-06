@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
-import com.tpt.model.Taikhoan;
+import com.tpt.model.TaikhoanModel;
 import com.tpt.service.ITaikhoanService;
 import com.tpt.service.impl.TaikhoanServiceImpl;
 import com.tpt.util.Constant;
@@ -38,7 +38,7 @@ public class ProfileController extends HttpServlet{
 		resp.setCharacterEncoding("utf-8");
 		HttpSession session = req.getSession();
 		Object ob = session.getAttribute("account");
-		Taikhoan taikhoan = (Taikhoan) ob;
+		TaikhoanModel taikhoan = (TaikhoanModel) ob;
 		
 		Part part = req.getPart("anhdaidien");
 		String realPath = Constant.DIR + "/taikhoan";

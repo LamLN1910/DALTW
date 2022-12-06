@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.tpt.dao.IDanhgiaDao;
 import com.tpt.dao.impl.DanhgiaDaoImpl;
-import com.tpt.model.Danhgia;
+import com.tpt.model.DanhgiaModel;
 import com.tpt.service.IDanhgiaService;
 
 public class DanhgiaServiceImpl implements IDanhgiaService
@@ -25,14 +25,14 @@ public class DanhgiaServiceImpl implements IDanhgiaService
 	}
 
 	@Override
-	public boolean insertDanhgia(Danhgia danhgia)
+	public boolean insertDanhgia(DanhgiaModel danhgia)
 	{
 		// TODO Auto-generated method stub
 		return danhgiaDao.insertDanhgia(danhgia);
 	}
 
 	@Override
-	public List<Danhgia> findById_p(int id_p)
+	public List<DanhgiaModel> findById_p(int id_p)
 	{
 		// TODO Auto-generated method stub
 		return danhgiaDao.findById_p(id_p);

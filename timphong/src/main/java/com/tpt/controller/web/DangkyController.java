@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.tpt.model.Taikhoan;
+import com.tpt.model.TaikhoanModel;
 import com.tpt.util.Constant;
 import com.tpt.util.ConstantFunction;
 import com.tpt.util.SendMail;
@@ -29,7 +29,7 @@ public class DangkyController extends HttpServlet {
 
 		boolean test = SendMail.sendEmail(userMail, Constant.subMailVerify, Constant.textMailVerify+code);
 		if (test && (req.getParameter("matkhauregister").equals(req.getParameter("confirmmatkhauregister")))) {
-			Taikhoan taikhoan = new Taikhoan();
+			TaikhoanModel taikhoan = new TaikhoanModel();
 			taikhoan.setAnhdaidien("x");
 			taikhoan.setTentk(req.getParameter("taikhoanregister"));
 			taikhoan.setHo(req.getParameter("ho"));

@@ -2,17 +2,17 @@ package com.tpt.model;
 
 import java.util.List;
 
-public class Huyen
+public class HuyenModel
 {
 	private int mahuyen;
 	private String tenhuyen;
 	private int matinh;
-	Tinh tinh;
-	List<Xa> xas;
-	public Huyen()
+	TinhModel tinh;
+	List<XaModel> xas;
+	public HuyenModel()
 	{
 	}
-	public Huyen(int mahuyen, String tenhuyen, int matinh, Tinh tinh, List<Xa> xas)
+	public HuyenModel(int mahuyen, String tenhuyen, int matinh, TinhModel tinh, List<XaModel> xas)
 	{
 		super();
 		this.mahuyen = mahuyen;
@@ -45,19 +45,19 @@ public class Huyen
 	{
 		this.matinh = matinh;
 	}
-	public Tinh getTinh()
+	public TinhModel getTinh()
 	{
 		return tinh;
 	}
-	public void setTinh(Tinh tinh)
+	public void setTinh(TinhModel tinh)
 	{
 		this.tinh = tinh;
 	}
-	public List<Xa> getXas()
+	public List<XaModel> getXas()
 	{
 		return xas;
 	}
-	public void setXas(List<Xa> xas)
+	public void setXas(List<XaModel> xas)
 	{
 		this.xas = xas;
 	}

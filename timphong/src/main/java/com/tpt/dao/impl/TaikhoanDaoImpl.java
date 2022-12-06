@@ -8,17 +8,17 @@ import java.util.List;
 
 import com.tpt.connection.DBConnection;
 import com.tpt.dao.ITaikhoanDao;
-import com.tpt.model.Taikhoan;
+import com.tpt.model.TaikhoanModel;
 import com.tpt.util.mapAttributeSQL;
 
 public class TaikhoanDaoImpl extends DBConnection implements ITaikhoanDao
 {
 	
 	@Override
-	public List<Taikhoan> getAll()
+	public List<TaikhoanModel> getAll()
 	{
 		String sql = "select * from taikhoan";
-		List<Taikhoan> taikhoans = new ArrayList<Taikhoan>();
+		List<TaikhoanModel> taikhoans = new ArrayList<TaikhoanModel>();
 		{
 		};
 		try
@@ -29,7 +29,7 @@ public class TaikhoanDaoImpl extends DBConnection implements ITaikhoanDao
 			mapAttributeSQL mapTaikhoan = new mapAttributeSQL();
 			while (rSet.next())
 			{
-				Taikhoan taikhoan = mapTaikhoan.mapTaikhoan(rSet);
+				TaikhoanModel taikhoan = mapTaikhoan.mapTaikhoan(rSet);
 				taikhoans.add(taikhoan);
 			}
 		} catch (Exception e)
@@ -39,10 +39,10 @@ public class TaikhoanDaoImpl extends DBConnection implements ITaikhoanDao
 		return taikhoans;
 	}
 	@Override
-	public List<Taikhoan> getAllUser()
+	public List<TaikhoanModel> getAllUser()
 	{
 		String sql = "select * from taikhoan where quyen = ?";
-		List<Taikhoan> users = new ArrayList<Taikhoan>();
+		List<TaikhoanModel> users = new ArrayList<TaikhoanModel>();
 		try
 		{
 			Connection connection = super.getConnection();
@@ -52,7 +52,7 @@ public class TaikhoanDaoImpl extends DBConnection implements ITaikhoanDao
 			mapAttributeSQL mapUser = new mapAttributeSQL();
 			while (rSet.next())
 			{
-				Taikhoan user = mapUser.mapTaikhoan(rSet);
+				TaikhoanModel user = mapUser.mapTaikhoan(rSet);
 				users.add(user);
 			}
 		} catch (Exception e)
@@ -62,10 +62,10 @@ public class TaikhoanDaoImpl extends DBConnection implements ITaikhoanDao
 		return users;
 	}
 	@Override
-	public List<Taikhoan> getAllSeller()
+	public List<TaikhoanModel> getAllSeller()
 	{
 		String sql = "select * from taikhoan where quyen = ?";
-		List<Taikhoan> sellers = new ArrayList<Taikhoan>();
+		List<TaikhoanModel> sellers = new ArrayList<TaikhoanModel>();
 		try
 		{
 			Connection connection = super.getConnection();
@@ -75,7 +75,7 @@ public class TaikhoanDaoImpl extends DBConnection implements ITaikhoanDao
 			mapAttributeSQL mapUser = new mapAttributeSQL();
 			while (rSet.next())
 			{
-				Taikhoan seller = mapUser.mapTaikhoan(rSet);
+				TaikhoanModel seller = mapUser.mapTaikhoan(rSet);
 				sellers.add(seller);
 			}
 		} catch (Exception e)
@@ -85,7 +85,7 @@ public class TaikhoanDaoImpl extends DBConnection implements ITaikhoanDao
 		return sellers;
 	}
 	@Override
-	public Taikhoan getTaikhoan(int id_tk)
+	public TaikhoanModel getTaikhoan(int id_tk)
 	{
 		String sql = "select * from taikhoan where id_tk = ?";
 		try
@@ -108,7 +108,7 @@ public class TaikhoanDaoImpl extends DBConnection implements ITaikhoanDao
 	}
 
 	@Override
-	public boolean insertTaikhoan(Taikhoan taikhoan)
+	public boolean insertTaikhoan(TaikhoanModel taikhoan)
 	{
 		String sql = "insert into taikhoan(tentk, matkhau, quyen, email, sdt, ho, ten, anhdaidien) values(?,?,?,?,?,?,?,?)";
 		try
@@ -153,7 +153,7 @@ public class TaikhoanDaoImpl extends DBConnection implements ITaikhoanDao
 	}
 
 	@Override
-	public boolean editTaikhoan(Taikhoan taikhoan)
+	public boolean editTaikhoan(TaikhoanModel taikhoan)
 	{
 		String sql = "update taikhoan set tentk=?, matkhau=?, quyen=?, email=?, sdt=?, ho=?, ten=?, anhdaidien=? where id_tk=?";
 		try
@@ -196,7 +196,7 @@ public class TaikhoanDaoImpl extends DBConnection implements ITaikhoanDao
 ////		System.out.println(taikhoanDao.deleteTaikhoan(3));
 //	}
 	@Override
-	public Taikhoan dangNhap(Taikhoan taikhoan) {
+	public TaikhoanModel dangNhap(TaikhoanModel taikhoan) {
 		String sql = "select * from taikhoan where (tentk = ?) and (matkhau = ?)";
 		try
 		{

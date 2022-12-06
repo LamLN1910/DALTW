@@ -8,7 +8,7 @@ import java.util.List;
 
 import com.tpt.connection.DBConnection;
 import com.tpt.dao.IDathenDao;
-import com.tpt.model.Dathen;
+import com.tpt.model.DathenModel;
 import com.tpt.util.mapAttributeSQL;
 
 public class DathenDaoImpl extends DBConnection implements IDathenDao 
@@ -17,7 +17,7 @@ public class DathenDaoImpl extends DBConnection implements IDathenDao
 	PreparedStatement pStatement = null;
 	ResultSet rSet = null;
 	@Override
-	public boolean insertDathen(Dathen dathen)
+	public boolean insertDathen(DathenModel dathen)
 	{
 		String sql = "insert into Dathen(id_tk, id_p, trangthai, ngay, gio) values(?, ?, ?, ?, ?)";
 		try
@@ -59,7 +59,7 @@ public class DathenDaoImpl extends DBConnection implements IDathenDao
 	}
 	
 	@Override
-	public boolean editDathen(Dathen dathen)
+	public boolean editDathen(DathenModel dathen)
 	{
 		String sql = "update Dathen set trangthai = ?, ngay = ?, gio = ? where id_tk = ? and id_p =? and id_dh = ?";
 		try
@@ -82,10 +82,10 @@ public class DathenDaoImpl extends DBConnection implements IDathenDao
 	}
 	
 	@Override
-	public List<Dathen> findByTrangthai(int id_tk, int tt)
+	public List<DathenModel> findByTrangthai(int id_tk, int tt)
 	{
 		String sql = "select * from Dathen where id_tk = ? and trangthai = ?";
-		List<Dathen> dathens = new ArrayList<>();
+		List<DathenModel> dathens = new ArrayList<>();
 		try
 		{
 			connection = super.getConnection();
@@ -107,7 +107,7 @@ public class DathenDaoImpl extends DBConnection implements IDathenDao
 	}
 	
 	@Override
-	public Dathen findDathen(int id_dh, int id_tk, int id_p)
+	public DathenModel findDathen(int id_dh, int id_tk, int id_p)
 	{
 		String sql = "select * from Dathen where id_tk=? and id_p=?";
 		try
@@ -130,11 +130,11 @@ public class DathenDaoImpl extends DBConnection implements IDathenDao
 	}
 	
 	@Override
-	public List<Dathen> findBySeller(int id_tk, int tt)
+	public List<DathenModel> findBySeller(int id_tk, int tt)
 	{
 		String sql = "select dathen.id_dh, dathen.id_p, dathen.id_tk, dathen.trangthai, dathen.ngay, dathen.gio from  (select * from phong where id_tk = ?) p_tk "
 				+ "							join dathen on p_tk.id_p = dathen.id_p where dathen.trangthai = ?";
-		List<Dathen> dathens = new ArrayList<>();
+		List<DathenModel> dathens = new ArrayList<>();
 		try
 		{
 			connection = super.getConnection();
@@ -156,10 +156,10 @@ public class DathenDaoImpl extends DBConnection implements IDathenDao
 	}
 	
 	@Override
-	public List<Dathen> findAll(int tt)
+	public List<DathenModel> findAll(int tt)
 	{
 		String sql = "select * from dathen where dathen.trangthai = ?";
-		List<Dathen> dathens = new ArrayList<>();
+		List<DathenModel> dathens = new ArrayList<>();
 		try
 		{
 			connection = super.getConnection();
@@ -182,7 +182,7 @@ public class DathenDaoImpl extends DBConnection implements IDathenDao
 	public static void main(String[] args)
 	{
 		IDathenDao dathenDao = new DathenDaoImpl();
-		Dathen dathen = dathenDao.findDathen(1, 7, 1);
+		DathenModel dathen = dathenDao.findDathen(1, 7, 1);
 		dathen.setTrangthai(0);
 		System.out.println(dathenDao.findBySeller(1, 1).size());
 	}

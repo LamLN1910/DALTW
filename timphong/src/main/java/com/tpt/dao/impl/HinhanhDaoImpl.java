@@ -9,7 +9,7 @@ import java.util.List;
 
 import com.tpt.connection.DBConnection;
 import com.tpt.dao.IHinhanhDao;
-import com.tpt.model.Hinhanh;
+import com.tpt.model.HinhanhModel;
 
 public class HinhanhDaoImpl extends DBConnection implements IHinhanhDao
 {
@@ -17,10 +17,10 @@ public class HinhanhDaoImpl extends DBConnection implements IHinhanhDao
 	PreparedStatement pStatement = null;
 	ResultSet rSet = null;
 	@Override
-	public List<Hinhanh> getHinhanhP(int id_p)
+	public List<HinhanhModel> getHinhanhP(int id_p)
 	{
 		String sql = "select * from hinhanh where id_p=? order by stt";
-		List<Hinhanh> hinhanhs = new ArrayList<Hinhanh>();
+		List<HinhanhModel> hinhanhs = new ArrayList<HinhanhModel>();
 		try
 		{
 			connection = super.getConnection();
@@ -29,7 +29,7 @@ public class HinhanhDaoImpl extends DBConnection implements IHinhanhDao
 			rSet = pStatement.executeQuery();
 			while(rSet.next())
 			{
-				Hinhanh hinhanh = new Hinhanh();
+				HinhanhModel hinhanh = new HinhanhModel();
 				hinhanh.setId_p(rSet.getInt("id_p"));
 				hinhanh.setHinhanh(rSet.getString("hinhanh"));
 				hinhanhs.add(hinhanh);
@@ -42,7 +42,7 @@ public class HinhanhDaoImpl extends DBConnection implements IHinhanhDao
 	}
 
 	@Override
-	public boolean insertHinhanh(Hinhanh hinhanh)
+	public boolean insertHinhanh(HinhanhModel hinhanh)
 	{
 		String sql = "insert into hinhanh(id_p, hinhanh) values(?, ?)";
 		try

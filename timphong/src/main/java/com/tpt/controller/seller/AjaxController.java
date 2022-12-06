@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.tpt.model.Phong;
-import com.tpt.model.Taikhoan;
+import com.tpt.model.PhongModel;
+import com.tpt.model.TaikhoanModel;
 import com.tpt.service.IPhongService;
 import com.tpt.service.impl.PhongServiceImpl;
 import com.tpt.util.Constant;
@@ -32,7 +32,7 @@ public class AjaxController extends HttpServlet
 		resp.setCharacterEncoding("utf-8");
 		HttpSession session = req.getSession();
 		Object object = session.getAttribute("account");
-		Taikhoan taikhoan = (Taikhoan)object;
+		TaikhoanModel taikhoan = (TaikhoanModel)object;
 		int id_tk = 0;
 		if(taikhoan != null)
 		{
@@ -77,9 +77,9 @@ public class AjaxController extends HttpServlet
 		}
 //		List<Phong> searchPhong = phongService.searchPhong(keyword);
 //		List<Phong> phongs = ConstantFunction.get9Phong(ConstantFunction.locPhong(searchPhong, loc));
-		List<Phong> phongs = phongService.locPhong(keyword, loc, Constant.thutu[tt], id_tk);
+		List<PhongModel> phongs = phongService.locPhong(keyword, loc, Constant.thutu[tt], id_tk);
 		PrintWriter out = resp.getWriter();
-		for (Phong p : phongs) {
+		for (PhongModel p : phongs) {
 			out.println("											<tr class=\"phong\">\r\n"
 					+ "												<td><a\r\n"
 					+ "													href=\"/timphong/seller/ql-phong/select?id_p=" + p.getId_p()+ "\"/>\r\n"
@@ -128,9 +128,9 @@ public class AjaxController extends HttpServlet
 				loc[i] = 0;
 			}
 		}
-		List<Phong> phongs = phongService.pagingPhong(cout, keyword, loc, Constant.thutu[tt], id_tk);
+		List<PhongModel> phongs = phongService.pagingPhong(cout, keyword, loc, Constant.thutu[tt], id_tk);
 		PrintWriter out = resp.getWriter();
-		for (Phong p : phongs) {
+		for (PhongModel p : phongs) {
 			out.println("											<tr class=\"phong\">\r\n"
 					+ "												<td><a\r\n"
 					+ "													href=\"/timphong/seller/ql-phong/select?id_p=" + p.getId_p()+ "\">\r\n"

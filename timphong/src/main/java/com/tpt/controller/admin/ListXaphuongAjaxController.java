@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.tpt.model.Xa;
+import com.tpt.model.XaModel;
 import com.tpt.service.IXaService;
 import com.tpt.service.impl.XaphuongServiceImpl;
 
@@ -28,12 +28,12 @@ public class ListXaphuongAjaxController extends HttpServlet {
 		
 		String id_xa = req.getParameter("exits");
 		int id_x = Integer.parseInt(id_xa);
-		List<Xa> xas = xaphuongService.getByQuanhuyen(id_x);
+		List<XaModel> xas = xaphuongService.getByQuanhuyen(id_x);
 	
 		
 		PrintWriter out = resp.getWriter();
 		out.print("<option value='0' selected>Chọn phường xã</option>");
-		for(Xa x : xas)
+		for(XaModel x : xas)
 		{
 			out.println("<option value=" + x.getMaxa() + " > " + x.getTenxa() + "</option>\n");
 		}

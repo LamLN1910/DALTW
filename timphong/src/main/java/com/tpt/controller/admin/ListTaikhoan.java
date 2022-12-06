@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.tpt.model.Taikhoan;
+import com.tpt.model.TaikhoanModel;
 import com.tpt.service.ITaikhoanService;
 import com.tpt.service.impl.TaikhoanServiceImpl;
 
@@ -24,8 +24,8 @@ public class ListTaikhoan extends HttpServlet
 		req.setCharacterEncoding("utf-8");
 		resp.setCharacterEncoding("utf-8");
 		ITaikhoanService taikhoanService = new TaikhoanServiceImpl();
-		List<Taikhoan> sellers = taikhoanService.getAllSeller();
-		List<Taikhoan> users = taikhoanService.getAllUser();
+		List<TaikhoanModel> sellers = taikhoanService.getAllSeller();
+		List<TaikhoanModel> users = taikhoanService.getAllUser();
 		req.setAttribute("sellers", sellers);
 		req.setAttribute("users", users);
 		req.getRequestDispatcher("/views/admin/list-taikhoan.jsp").forward(req, resp);

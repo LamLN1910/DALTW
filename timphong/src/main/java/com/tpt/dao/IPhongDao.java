@@ -2,23 +2,23 @@ package com.tpt.dao;
 
 import java.util.List;
 
-import com.tpt.model.Phong;
+import com.tpt.model.PhongModel;
 
 public interface IPhongDao
 {
-	public Phong getPhong(int id_p);
-	public List<Phong> getPhongSeller(int id_tk);
-	public boolean insertPhong(Phong phong);
+	public PhongModel getPhong(int id_p);
+	public List<PhongModel> getPhongSeller(int id_tk);
+	public boolean insertPhong(PhongModel phong);
 	public boolean deletePhong(int id_p);
-	public boolean editPhong(Phong newPhong);
-	public List<Phong> getPhongLoaiphong(int id_lp);
+	public boolean editPhong(PhongModel newPhong);
+	public List<PhongModel> getPhongLoaiphong(int id_lp);
 	
-	public List<Phong> get9Phong();
-	public List<Phong> pagingPhong(int index, String keyword, int loc[], String thutu, int isSeller);
-	public List<Phong> getAll();
+	public List<PhongModel> get9Phong();
+	public List<PhongModel> pagingPhong(int index, String keyword, int loc[], String thutu, int isSeller);
+	public List<PhongModel> getAll();
 	public int getIdPhong(String anhchinh);
 	
-	public List<Phong> searchPhong(String keyword, String thutu, int isSeller);
-	public boolean sellerUpdatePhong(Phong phong);
-	List<Phong> locPhong(String keyword, int loc[], String thutu, int isSeller);
+	public List<PhongModel> searchPhong(String keyword, String thutu, int isSeller);
+	public boolean sellerUpdatePhong(PhongModel phong);
+	List<PhongModel> locPhong(String keyword, int loc[], String thutu, int isSeller);
 }

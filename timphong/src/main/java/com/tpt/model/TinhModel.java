@@ -2,16 +2,16 @@ package com.tpt.model;
 
 import java.util.List;
 
-public class Tinh
+public class TinhModel
 {
 	private int matinh;
 	private String tentinh;
 	//private List<Huyen> huyens;
 	//private List<Phong> phongs;
-	public Tinh()
+	public TinhModel()
 	{
 	}
-	public Tinh(int matinh, String tentinh, List<Huyen> huyens, List<Phong> phongs)
+	public TinhModel(int matinh, String tentinh, List<HuyenModel> huyens, List<PhongModel> phongs)
 	{
 		super();
 		this.matinh = matinh;

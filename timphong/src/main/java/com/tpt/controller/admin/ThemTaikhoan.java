@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-import com.tpt.model.Taikhoan;
+import com.tpt.model.TaikhoanModel;
 import com.tpt.service.ITaikhoanService;
 import com.tpt.service.impl.TaikhoanServiceImpl;
 import com.tpt.util.Constant;
@@ -40,7 +40,7 @@ public class ThemTaikhoan extends HttpServlet
 		Part part = req.getPart("anhdaidien");
 		String realPath = Constant.DIR + "/taikhoan";
 		String filename = ThemAnh.ThemAnh(part, realPath, 0);
-		Taikhoan taikhoan = new Taikhoan();
+		TaikhoanModel taikhoan = new TaikhoanModel();
 		taikhoan.setTentk(req.getParameter("tentk"));
 		taikhoan.setMatkhau(req.getParameter("matkhau"));
 		taikhoan.setHo(req.getParameter("ho"));

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.tpt.model.Phong;
+import com.tpt.model.PhongModel;
 import com.tpt.service.IPhongService;
 import com.tpt.service.impl.PhongServiceImpl;
 
@@ -26,7 +26,7 @@ public class ListPhong extends HttpServlet{
 		resp.setCharacterEncoding("utf-8");
 		
 		String id_tk = req.getParameter("id_tk");
-		List<Phong> phongs = phongService.getPhongSeller(Integer.parseInt(id_tk));
+		List<PhongModel> phongs = phongService.getPhongSeller(Integer.parseInt(id_tk));
 		req.setAttribute("phongs", phongs);
 		req.getRequestDispatcher("/views/seller/list-phong.jsp").forward(req, resp);
 	}

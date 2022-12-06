@@ -1,15 +1,15 @@
 package com.tpt.model;
 
-public class Theodoi
+public class TheodoiModel
 {
 	private int id_dc;
 	private int id_td;
-	private Taikhoan nguoiTheodoi;
-	private Taikhoan duocTheodoi;
-	public Theodoi()
+	private TaikhoanModel nguoiTheodoi;
+	private TaikhoanModel duocTheodoi;
+	public TheodoiModel()
 	{
 	}
-	public Theodoi(int id_dc, int id_td, Taikhoan nguoiTheodoi, Taikhoan duocTheodoi)
+	public TheodoiModel(int id_dc, int id_td, TaikhoanModel nguoiTheodoi, TaikhoanModel duocTheodoi)
 	{
 		super();
 		this.id_dc = id_dc;
@@ -33,19 +33,19 @@ public class Theodoi
 	{
 		this.id_td = id_td;
 	}
-	public Taikhoan getNguoiTheodoi()
+	public TaikhoanModel getNguoiTheodoi()
 	{
 		return nguoiTheodoi;
 	}
-	public void setNguoiTheodoi(Taikhoan nguoiTheodoi)
+	public void setNguoiTheodoi(TaikhoanModel nguoiTheodoi)
 	{
 		this.nguoiTheodoi = nguoiTheodoi;
 	}
-	public Taikhoan getDuocTheodoi()
+	public TaikhoanModel getDuocTheodoi()
 	{
 		return duocTheodoi;
 	}
-	public void setDuocTheodoi(Taikhoan duocTheodoi)
+	public void setDuocTheodoi(TaikhoanModel duocTheodoi)
 	{
 		this.duocTheodoi = duocTheodoi;
 	}

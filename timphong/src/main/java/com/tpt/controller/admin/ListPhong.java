@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.tpt.model.Loaiphong;
-import com.tpt.model.Phong;
-import com.tpt.model.Tinh;
+import com.tpt.model.LoaiphongModel;
+import com.tpt.model.PhongModel;
+import com.tpt.model.TinhModel;
 import com.tpt.service.ILoaiphongService;
 import com.tpt.service.IPhongService;
 import com.tpt.service.ITinhService;
@@ -32,9 +32,9 @@ public class ListPhong extends HttpServlet {
 		req.setCharacterEncoding("utf-8");
 		resp.setCharacterEncoding("utf-8");
 		
-		List<Tinh> tinhs = tinhService.getAll();
-		List<Phong> phongs = phongService.getAll();
-		List<Loaiphong> loaiphongs = loaiphongService.getAll();
+		List<TinhModel> tinhs = tinhService.getAll();
+		List<PhongModel> phongs = phongService.getAll();
+		List<LoaiphongModel> loaiphongs = loaiphongService.getAll();
 		
 		req.setAttribute("loaiphongs", loaiphongs);
 		req.setAttribute("tinhs", tinhs);

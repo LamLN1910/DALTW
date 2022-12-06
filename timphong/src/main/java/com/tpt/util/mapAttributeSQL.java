@@ -16,15 +16,15 @@ import com.tpt.dao.impl.QuanhuyenDaoImpl;
 import com.tpt.dao.impl.TaikhoanDaoImpl;
 import com.tpt.dao.impl.TinhDaoImpl;
 import com.tpt.dao.impl.XaphuongDaoImpl;
-import com.tpt.model.Danhgia;
-import com.tpt.model.Dathen;
-import com.tpt.model.Huyen;
-import com.tpt.model.Loaiphong;
-import com.tpt.model.Phong;
-import com.tpt.model.Taikhoan;
-import com.tpt.model.Theodoi;
-import com.tpt.model.Tinh;
-import com.tpt.model.Xa;
+import com.tpt.model.DanhgiaModel;
+import com.tpt.model.DathenModel;
+import com.tpt.model.HuyenModel;
+import com.tpt.model.LoaiphongModel;
+import com.tpt.model.PhongModel;
+import com.tpt.model.TaikhoanModel;
+import com.tpt.model.TheodoiModel;
+import com.tpt.model.TinhModel;
+import com.tpt.model.XaModel;
 
 public class mapAttributeSQL
 {
@@ -32,9 +32,9 @@ public class mapAttributeSQL
 	{
 	}
 	
-	public Danhgia mapDanhgia(ResultSet rSet)
+	public DanhgiaModel mapDanhgia(ResultSet rSet)
 	{
-		Danhgia danhgia = new Danhgia();
+		DanhgiaModel danhgia = new DanhgiaModel();
 		ITaikhoanDao taikhoanDao = new TaikhoanDaoImpl();
 		try
 		{
@@ -55,13 +55,13 @@ public class mapAttributeSQL
 		return null;
 	}
 	
-	public Phong mapPhong(ResultSet rSet)
+	public PhongModel mapPhong(ResultSet rSet)
 	{
 		ILoaiphongDao loaiphongDao = new LoaiphongDaoImpl();
 		IHinhanhDao hinhanhDao = new HinhanhDaoImpl();
 		IXaphuongDao xaphuongDao = new XaphuongDaoImpl();
 		ITaikhoanDao taikhoanDao = new TaikhoanDaoImpl();
-		Phong phong = new Phong();
+		PhongModel phong = new PhongModel();
 		try
 		{
 			int id_lp = rSet.getInt("id_lp");
@@ -80,8 +80,8 @@ public class mapAttributeSQL
 			phong.setId_tk(rSet.getInt("id_tk"));
 			phong.setMaxa(rSet.getInt("id_x"));
 			phong.setNgaydang(rSet.getDate("ngaydang"));
-			Xa xa = xaphuongDao.getXa(phong.getMaxa());
-			Taikhoan taikhoan = taikhoanDao.getTaikhoan(phong.getId_tk());
+			XaModel xa = xaphuongDao.getXa(phong.getMaxa());
+			TaikhoanModel taikhoan = taikhoanDao.getTaikhoan(phong.getId_tk());
 			phong.setTaikhoan(taikhoan);
 			phong.setXa(xa);
 			phong.setLoaiphong(loaiphongDao.getLoaiphong(id_lp));
@@ -94,9 +94,9 @@ public class mapAttributeSQL
 		return null;
 	}
 	
-	public Taikhoan mapTaikhoan(ResultSet rSet)
+	public TaikhoanModel mapTaikhoan(ResultSet rSet)
 	{
-		Taikhoan taikhoan = new Taikhoan();
+		TaikhoanModel taikhoan = new TaikhoanModel();
 		try
 		{
 			taikhoan.setAnhdaidien(rSet.getString("anhdaidien"));
@@ -115,9 +115,9 @@ public class mapAttributeSQL
 		}
 	}
 	
-	public Loaiphong mapLoaiphong(ResultSet rSet)
+	public LoaiphongModel mapLoaiphong(ResultSet rSet)
 	{
-		Loaiphong loaiphong = new Loaiphong();
+		LoaiphongModel loaiphong = new LoaiphongModel();
 		try
 		{
 			int id_lp = rSet.getInt("id_lp");
@@ -130,9 +130,9 @@ public class mapAttributeSQL
 		return null;
 	}
 	
-	public Theodoi mapTheodoi(ResultSet rSet)
+	public TheodoiModel mapTheodoi(ResultSet rSet)
 	{
-		Theodoi theodoi = new Theodoi();
+		TheodoiModel theodoi = new TheodoiModel();
 		try
 		{
 			theodoi.setId_dc(rSet.getInt("id_dc"));
@@ -145,9 +145,9 @@ public class mapAttributeSQL
 		return null;
 	}
 	
-	public Tinh mapTinh(ResultSet rSet)
+	public TinhModel mapTinh(ResultSet rSet)
 	{
-		Tinh tinh = new Tinh();
+		TinhModel tinh = new TinhModel();
 		try
 		{
 			tinh.setMatinh(rSet.getInt("ID"));
@@ -159,16 +159,16 @@ public class mapAttributeSQL
 		return null;
 	}
 	
-	public Huyen mapHuyen(ResultSet rSet)
+	public HuyenModel mapHuyen(ResultSet rSet)
 	{
 		ITinhDao tinhDao = new TinhDaoImpl();
-		Huyen huyen = new Huyen();
+		HuyenModel huyen = new HuyenModel();
 		try
 		{
 			huyen.setMahuyen(rSet.getInt("ID"));
 			huyen.setTenhuyen(rSet.getString("tenquanhuyen"));
 			huyen.setMatinh(rSet.getInt("tinhThanhPhoId"));
-			Tinh tinh = tinhDao.getTinh(huyen.getMatinh());
+			TinhModel tinh = tinhDao.getTinh(huyen.getMatinh());
 			huyen.setTinh(tinh);
 			return huyen;
 		} catch (Exception e)
@@ -178,16 +178,16 @@ public class mapAttributeSQL
 		return null;
 	}
 	
-	public Xa mapXa(ResultSet rSet)
+	public XaModel mapXa(ResultSet rSet)
 	{
 		IQuanHuyenDao quanHuyenDao = new QuanhuyenDaoImpl();
-		Xa xa = new Xa();
+		XaModel xa = new XaModel();
 		try
 		{
 			xa.setMaxa(rSet.getInt("ID"));
 			xa.setTenxa(rSet.getString("tenxaphuong"));
 			xa.setMahuyen(rSet.getInt("quanHuyenId"));
-			Huyen huyen = quanHuyenDao.getHuyen(xa.getMahuyen());
+			HuyenModel huyen = quanHuyenDao.getHuyen(xa.getMahuyen());
 			xa.setHuyen(huyen);
 			return xa;
 		} catch (Exception e)
@@ -196,9 +196,9 @@ public class mapAttributeSQL
 		return null;
 	}
 	
-	public Dathen mapDathen(ResultSet rSet)
+	public DathenModel mapDathen(ResultSet rSet)
 	{
-		Dathen dathen = new Dathen();
+		DathenModel dathen = new DathenModel();
 		try
 		{
 			int id_p = rSet.getInt("id_p");

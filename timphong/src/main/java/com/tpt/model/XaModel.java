@@ -1,15 +1,15 @@
 package com.tpt.model;
 
-public class Xa
+public class XaModel
 {
 	private int maxa;
 	private String tenxa;
 	private int mahuyen;
-	private Huyen huyen;
-	public Xa()
+	private HuyenModel huyen;
+	public XaModel()
 	{
 	}
-	public Xa(int maxa, String tenxa, int mahuyen, Huyen huyen)
+	public XaModel(int maxa, String tenxa, int mahuyen, HuyenModel huyen)
 	{
 		super();
 		this.maxa = maxa;
@@ -41,11 +41,11 @@ public class Xa
 	{
 		this.mahuyen = mahuyen;
 	}
-	public Huyen getHuyen()
+	public HuyenModel getHuyen()
 	{
 		return huyen;
 	}
-	public void setHuyen(Huyen huyen)
+	public void setHuyen(HuyenModel huyen)
 	{
 		this.huyen = huyen;
 	}

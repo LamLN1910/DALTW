@@ -3,8 +3,8 @@ package com.tpt.util;
 import java.util.Random;
 
 
-import com.tpt.model.Dathen;
-import com.tpt.model.Phong;
+import com.tpt.model.DathenModel;
+import com.tpt.model.PhongModel;
 
 public class ConstantFunction
 {
@@ -15,7 +15,7 @@ public class ConstantFunction
 		return String.format("%06d", number);
 	}
 	
-	public static final String textDathenUser(Dathen dathen)
+	public static final String textDathenUser(DathenModel dathen)
 	{
 		String text;
 		text = "Chào " + dathen.getNguoidat().getHo() + " " 
@@ -36,7 +36,7 @@ public class ConstantFunction
 		return text;
 	}
 	
-	public static final String textDathenSeller(Phong phong, Dathen dathen)
+	public static final String textDathenSeller(PhongModel phong, DathenModel dathen)
 	{
 		String text;
 		text = "Chào " + phong.getTaikhoan().getHo() + " " 
