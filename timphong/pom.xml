@@ -20,19 +20,32 @@
 
 	</properties>
 	<dependencies>
-
-
+		<!-- https://mvnrepository.com/artifact/junit/junit -->
 		<dependency>
-
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.4</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
 			<groupId>org.hibernate</groupId>
-
-			<artifactId>hibernate-core</artifactId>
-
-			<version>${hibernate.version}</version>
-
+			<artifactId>hibernate-c3p0</artifactId>
+			<version>5.6.3.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.46</version>
+			<scope>compile</scope>
 		</dependency>
 
-<dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+
+		<dependency>
 			<groupId>org.apache.tomcat</groupId>
 			<artifactId>tomcat-catalina-ha</artifactId>
 			<version>9.0.40</version>
@@ -40,25 +53,17 @@
 		<!-- Hibernate Validator -->
 
 		<dependency>
-
 			<groupId>org.hibernate</groupId>
-
 			<artifactId>hibernate-validator</artifactId>
-
 			<version>${hibernate.validator}</version>
-
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-entitymanager -->
 
 		<dependency>
-
 			<groupId>org.hibernate</groupId>
-
 			<artifactId>hibernate-entitymanager</artifactId>
-
 			<version>${hibernate.entity}</version>
-
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
@@ -174,8 +179,6 @@
 		</dependency>
 
 
-
-		
 		<!-- https://mvnrepository.com/artifact/com.sun.mail/jakarta.mail -->
 		<dependency>
 			<groupId>com.sun.mail</groupId>

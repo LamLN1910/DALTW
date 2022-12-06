@@ -8,9 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.tpt.model.Loaiphong;
-import com.tpt.service.ILoaiphongService;
-import com.tpt.service.impl.LoaiphongServiceImpl;
+import com.tpt.dao.hibernate.impl.LoaiphongDao;
+//import com.tpt.model.Loaiphong;
+import com.tpt.model.hibernate.Loaiphong;
+//import com.tpt.service.ILoaiphongService;
+//import com.tpt.service.impl.LoaiphongServiceImpl;
 
 @WebServlet(urlPatterns = { "/admin/them-loaiphong" })
 public class ThemLoaiPhong extends HttpServlet {
@@ -18,8 +20,8 @@ public class ThemLoaiPhong extends HttpServlet {
 	/**
 	 * 
 	 */
-	ILoaiphongService loaiphongService = new LoaiphongServiceImpl();
-
+	//ILoaiphongService loaiphongService = new LoaiphongServiceImpl();
+	LoaiphongDao loaiphongDao = new LoaiphongDao();
 	private static final long serialVersionUID = 1L;
 
 	@Override
@@ -39,8 +41,9 @@ public class ThemLoaiPhong extends HttpServlet {
 			req.setAttribute("emptyText", "Bạn chưa nhập loại phòng");
 			req.getRequestDispatcher("/views/admin/them-loaiphong.jsp").forward(req, resp);
 		} else {
-			loaiphongService.insertLoaiphong(loaiphong);
-
+			//loaiphongService.insertLoaiphong(loaiphong);
+			loaiphongDao.create(loaiphong);
+			loaiphongDao.close();
 			resp.sendRedirect(req.getContextPath() + "/admin/list-loaiphong");
 		}
 	}

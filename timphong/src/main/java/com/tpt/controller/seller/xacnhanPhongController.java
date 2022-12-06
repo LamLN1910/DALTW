@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.jasper.tagplugins.jstl.core.If;
-
 import com.tpt.model.Dathen;
 import com.tpt.model.Taikhoan;
 import com.tpt.service.IDathenService;

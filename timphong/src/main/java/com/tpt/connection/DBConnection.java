@@ -2,17 +2,22 @@ package com.tpt.connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
-public class DBConnection
-{
-	private final String userID = "sa";
-	private final String passWord = "12346";
-	private final String url="jdbc:sqlserver://localhost:1433;databaseName=timphong;user="+userID+";password="+passWord;
-	
+public class DBConnection {
+	private final String userID = "root";
+	private final String passWord = "01274757673";
+	private final String url = "jdbc:mysql://localhost:3306/timphong?autoReconnect=true&useSSL=false";
+
 	public Connection getConnection() throws Exception
 	{
-		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-		return DriverManager.getConnection(url);
-		
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			//System.out.print("success");
+			return DriverManager.getConnection(url, userID, passWord);
+			
+		}catch(SQLException e) {
+		    throw new IllegalStateException("Cannot connect the database!", e);
+		}
 	}
 }
